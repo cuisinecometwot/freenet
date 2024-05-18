@@ -16,14 +16,11 @@ public class StaffView {
         
         JPanel p2 = new CustomersPanel();
 
-        JPanel p3 = new JPanel();
-        p3.setPreferredSize(new Dimension(200, 500));
+        JPanel p3 = new StaffsPanel();
 
-        JPanel p4 = new JPanel();
-        p4.setPreferredSize(new Dimension(200, 500));
+        JPanel p4 = new OrdersPanel();
 
-        JPanel p5 = new JPanel();
-        p4.setPreferredSize(new Dimension(200, 500));
+        JPanel p5 = new SchedulePanel();
 
         JTabbedPane tp = new JTabbedPane();
         tp.setTabPlacement(JTabbedPane.LEFT);  // Change to JTabbedPane.RIGHT for placement on the right
