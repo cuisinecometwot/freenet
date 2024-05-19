@@ -14,7 +14,6 @@ public class LoginController {
             Connection conn = DBConnection.getDBConnection().getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setObject(1, '%' + username);
-            //statement.setObject(2, password);
             ResultSet result = statement.executeQuery();
 
             if (result.next()) {
@@ -33,25 +32,6 @@ public class LoginController {
                         return "admin";
                     }
                 } else return "invalid";
-                /*if (!result.getString(1).equals("usr." + username)) {
-                    return "invalid";
-                }
-                String pwd = result.getString(2);
-                if (pwd.equals(password)) {
-                    return "user";
-                }
-                if (!result.getString(1).equals("sta." + username)) {
-                    return "invalid";
-                }
-                if (pwd.equals(password)) {
-                    return "staff";
-                }
-                if (!result.getString(1).equals("adm." + username)) {
-                    return "invalid";
-                }
-                if (pwd.equals(password)) {
-                    return "admin";
-                }*/
             }
             return "invalid";
         } catch (ClassNotFoundException | SQLException e) {
