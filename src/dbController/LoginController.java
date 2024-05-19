@@ -18,7 +18,22 @@ public class LoginController {
             ResultSet result = statement.executeQuery();
 
             if (result.next()) {
-                if (!result.getString(1).equals("usr." + username)) {
+                String usernameResult = result.getString(1);
+                String pwd = result.getString(2);
+                if (usernameResult.equals("usr." + username)) {
+                    if (pwd.equals(password)) {
+                        return "user";
+                    }
+                } else if (usernameResult.equals("sta." + username)) {
+                    if (pwd.equals(password)) {
+                        return "staff";
+                    }
+                } else if (usernameResult.equals("adm." + username)) {
+                    if (pwd.equals(password)) {
+                        return "admin";
+                    }
+                } else return "invalid";
+                /*if (!result.getString(1).equals("usr." + username)) {
                     return "invalid";
                 }
                 String pwd = result.getString(2);
@@ -36,7 +51,7 @@ public class LoginController {
                 }
                 if (pwd.equals(password)) {
                     return "admin";
-                }
+                }*/
             }
             return "invalid";
         } catch (ClassNotFoundException | SQLException e) {
