@@ -14,8 +14,8 @@ public class LoginTest {
         @Test
         public void test() {
             LoginController loginController = new LoginController();
-            boolean result = loginController.login("linhsan", "123456");
-            assertEquals(true, result);  // This assertion is failing
+            String result = loginController.login("tabeo", "123456");
+            assertEquals("invalid", result);  // This assertion is failing
         }
     }
 
