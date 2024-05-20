@@ -31,6 +31,8 @@ public class LoginController {
                     if (pwd.equals(password)) {
                         return "admin";
                     }
+
+
                 } else return "invalid";
             }
             return "invalid";
