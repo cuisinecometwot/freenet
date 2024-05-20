@@ -1,3 +1,5 @@
+package View;
+
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.border.EmptyBorder; // For spacing
