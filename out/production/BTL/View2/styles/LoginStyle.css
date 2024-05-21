@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Itim';
+    src: url('../front/Itim-Regular.ttf');
+}
+
+.back-ground{
+    -fx-background-color: #DD590F;
+    -fx-border-width: 0 0 8px 0; /* Only bottom border with width 2px */
+    -fx-border-color: transparent transparent #E9BE9E transparent;
+}
+.login-container {
+    -fx-background-color: #FFFFFF;
+    -fx-border-width: 8px; /* Border width */
+    -fx-border-color: #E9BE9E; /* Border color */
+    -fx-border-radius: 15px; /* Border radius */
+    -fx-background-radius: 20px; /* Background radius to match border radius */
+}
+.text-field {
+    -fx-border-radius: 5px; /* Border radius */
+    -fx-background-color: #F9EEE6;
+}
+
+.button {
+    -fx-font-size: 14px; /* Font size */
+    -fx-font-family: "Itim"; /* Font family */
+    -fx-text-fill: #ffffff; /* Text color */
+    -fx-background-color: #DD590F; /* Background color */
+    -fx-background-radius: 5px; /* Background radius */
+    -fx-border-radius: 5px; /* Border radius */
+}
+
+.login-title {
+    -fx-alignment: center;
+    -fx-font-size: 32px; /* Font size */
+    -fx-font-family: "Itim"; /* Font family */
+    -fx-text-fill: #ffffff; /* Text color */
+}
+
+.computer-id {
+    -fx-text-alignment: RIGHT;
+    -fx-font-size: 14px; /* Font size */
+    -fx-font-family: "Itim"; /* Font family */
+    -fx-text-fill: #E9BE9E; /* Text color */
+}

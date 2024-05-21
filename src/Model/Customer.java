@@ -1,4 +1,4 @@
-package Model.taishou;
+package Model;
 
 public class Customer {
     private String name;

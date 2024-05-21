@@ -21,14 +21,17 @@ public class LoginController {
                 String pwd = result.getString(2);
                 if (usernameResult.equals("usr." + username)) {
                     if (pwd.equals(password)) {
+                        System.out.println("1");
                         return "user";
                     }
                 } else if (usernameResult.equals("sta." + username)) {
                     if (pwd.equals(password)) {
+                        System.out.println("2");
                         return "staff";
                     }
                 } else if (usernameResult.equals("adm." + username)) {
                     if (pwd.equals(password)) {
+                        System.out.println("3");
                         return "admin";
                     }
 
@@ -38,6 +41,7 @@ public class LoginController {
             return "invalid";
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
+            System.out.println("4");
             return "invalid";
         }
     }
