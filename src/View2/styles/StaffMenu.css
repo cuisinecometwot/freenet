@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'Itim';
+    src: url('../font/Itim-Regular.ttf');
+}
+
+
+.side-button {
+    -fx-font-size: 40px; /* Font size */
+    -fx-font-family: "Itim"; /* Font family */
+    -fx-text-fill: #000000; /* Text color */
+    -fx-background-color: #DD590F; /* Background color */
+     -fx-border-color: E9BE9E;   /* Border color */
+     -fx-border-width: 3.5px 7px 3.5px 7px;     /* Border width */
+     -fx-border-style: solid;   /* Border style */
+     -fx-border-radius: 5px;
+     -fx-align : BASELINE_LEFT;
+}
+
+#last-button {
+    -fx-font-size: 40px; /* Font size */
+     -fx-font-family: "Itim"; /* Font family */
+     -fx-text-fill: #000000; /* Text color */
+     -fx-background-color: #DD590F; /* Background color */
+      -fx-border-color: E9BE9E;   /* Border color */
+      -fx-border-width: 3.5px 7px 0 7px;     /* Border width */
+      -fx-border-style: solid;   /* Border style */
+      -fx-border-radius: 5px;
+      -fx-align : BASELINE_LEFT;
+}
+
+#last-layout {
+    -fx-background-color: #DD590F; /* Background color */
+          -fx-border-color: E9BE9E;   /* Border color */
+          -fx-border-width: 3.5px 7px 7px 7px;     /* Border width */
+          -fx-border-style: solid;   /* Border style */
+}
+
+#first-layout {
+    -fx-background-color: #DD590F; /* Background color */
+    -fx-border-color: E9BE9E;   /* Border color */
+    -fx-border-width: 7px 7px 3.5px 7px;     /* Border width */
+    -fx-border-style: solid;   /* Border style */
+}
+
+
