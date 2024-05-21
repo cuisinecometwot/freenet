@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Itim';
-    src: url('../front/Itim-Regular.ttf');
+    src: url('../font/Itim-Regular.ttf');
 }
 
 .back-ground{
@@ -41,4 +41,9 @@
     -fx-font-size: 14px; /* Font size */
     -fx-font-family: "Itim"; /* Font family */
     -fx-text-fill: #E9BE9E; /* Text color */
+}
+
+.error-label {
+    -fx-text-alignment: RIGHT;
+    -fx-text-fill: #ED3C3C;
 }
