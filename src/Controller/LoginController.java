@@ -68,6 +68,12 @@ public class LoginController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btnLogin.setOnAction(event -> Model.getInstance().getViewFactory().showStaffWindow());
+        btnLogin.setOnAction(event -> onLogin());
+    }
+
+    private void onLogin(){
+        Stage stage =   (Stage) btnLogin.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showStaffWindow();
     }
 }

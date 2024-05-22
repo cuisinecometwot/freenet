@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane prefHeight="700.0" prefWidth="450.0" stylesheets="@../styles/StaffMenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.StaffMenu">
+<AnchorPane prefHeight="700.0" prefWidth="450.0" stylesheets="@../styles/StaffMenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.StaffMenuController">
    <VBox layoutX="123.0" layoutY="4.0" prefHeight="700.0" prefWidth="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <Pane id="first-layout" prefHeight="302.0" prefWidth="450.0">
          <Circle fill="WHITE" layoutX="105.0" layoutY="129.0" radius="74.0" stroke="BLACK" strokeType="INSIDE" />

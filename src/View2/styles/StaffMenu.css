@@ -12,7 +12,7 @@
      -fx-border-color: E9BE9E;   /* Border color */
      -fx-border-width: 7px 7px 7px 7px;     /* Border width */
      -fx-border-style: solid;   /* Border style */
-     -fx-border-radius: 5px;
+     /*-fx-border-radius: 5px;*/
      -fx-align : BASELINE_LEFT;
      -fx-padding: 0 0 0 20px;
 }

@@ -9,4 +9,5 @@
    <Label layoutX="258.0" layoutY="57.0" styleClass="label-label" text="Status" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="57.0" />
    <Label layoutX="434.0" layoutY="57.0" styleClass="label-label" text="Username" AnchorPane.leftAnchor="434.0" AnchorPane.topAnchor="57.0" />
    <ListView fx:id="UserListView" layoutX="35.0" layoutY="123.0" prefHeight="536.0" prefWidth="650.0" styleClass="Vbox" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" />
+   <Label layoutX="35.0" layoutY="23.0" text="Order list" />
 </AnchorPane>

@@ -3,7 +3,7 @@
     src: url('../font/Itim-Regular.ttf');
 }
 
-.computer-status {
+.anchor-pane {
     -fx-background-color: #E9BE9E ;
     -fx-border-color: #DD590F;   /* Border color */
     -fx-border-width: 0.5px 0.5px 0.5px 0.5px;     /* Border width */
@@ -11,7 +11,13 @@
     -fx-border-radius: 10px; /* Border radius */
     -fx-background-radius: 10px; /* Background radius to match border radius */
     -fx-pref-height: 50px;
+    -fx-text-fill: #000000;
+    -fx-font-family: Itim;
+    -fx-font-size: 18px;
 }
+
+
+
 
 .Vbox {
     -fx-background-color: #ffffff;
@@ -31,6 +37,8 @@
     -fx-padding: 0;
 }
 
+
+
 .scroll-pane .viewport {
     -fx-background-color: white;
   }
@@ -41,20 +49,8 @@
     -fx-font-size: 24px;
 }
 
-.computer-id {
+.computer-content {
     -fx-text-fill: #000000;
-    -fx-font-family: Itim;
-    -fx-font-size: 18px;
-}
-
-.computer-status-on {
-    -fx-text-fill: #21B02F;
-    -fx-font-family: Itim;
-    -fx-font-size: 18px;
-}
-
-.computer-status-off {
-    -fx-text-fill: #929292;
     -fx-font-family: Itim;
     -fx-font-size: 18px;
 }
