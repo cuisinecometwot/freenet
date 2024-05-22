@@ -29,7 +29,7 @@
             <TextField fx:id="tfUsername" layoutX="26.0" layoutY="92.0" prefHeight="20.0" prefWidth="171.0" />
             <Label layoutX="26.0" layoutY="66.0" prefHeight="18.0" prefWidth="171.0" text="Username:" />
             <Label layoutX="26.0" layoutY="127.0" prefHeight="18.0" prefWidth="171.0" text="Password:" />
-            <Button fx:id="btnLogin" layoutX="26.0" layoutY="211.0" mnemonicParsing="false" onAction="#handleLoginButtonAction" prefHeight="32.0" prefWidth="171.0" text="Log in" />
+            <Button fx:id="btnLogin" layoutX="26.0" layoutY="211.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="171.0" text="Log in" />
             <Label fx:id="lbError" layoutX="26.0" layoutY="32.0" prefHeight="17.0" prefWidth="171.0" styleClass="error-label" />
             <PasswordField fx:id="tfPassword" layoutX="26.0" layoutY="152.0" prefHeight="20.0" prefWidth="171.0" styleClass="text-field" />
          </children>

@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController{
+public class LoginController implements Initializable{
 
     private AnchorPane login;
     @FXML
@@ -34,7 +35,7 @@ public class LoginController{
 
     dbController.LoginController log = new dbController.LoginController();
 
-    public void initialize(){
+    /*public void initialize(){
         lbError.setVisible(false);
     }
 
@@ -63,5 +64,10 @@ public class LoginController{
                 System.out.println("User");
             }
         }
+    }*/
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        btnLogin.setOnAction(event -> Model.getInstance().getViewFactory().showStaffWindow());
     }
 }
