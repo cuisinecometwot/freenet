@@ -2,7 +2,7 @@
   <library name="de.jensd.fontawesomefx" type="repository">
     <properties maven-id="de.jensd:fontawesomefx:8.9" />
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/de/jensd/fontawesomefx/8.9/fontawesomefx-8.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/fontawesomefx-8.9.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
