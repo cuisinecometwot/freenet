@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane prefHeight="700.0" prefWidth="450.0" stylesheets="@../styles/AdminStaffMenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.StaffMenuController">
+<AnchorPane prefHeight="700.0" prefWidth="450.0" stylesheets="@../styles/AdminStaffMenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminMenuController">
    <VBox layoutX="123.0" layoutY="4.0" prefHeight="700.0" prefWidth="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <Pane id="first-layout" prefHeight="302.0" prefWidth="450.0">
          <Circle fill="WHITE" layoutX="105.0" layoutY="129.0" radius="74.0" stroke="BLACK" strokeType="INSIDE" />
-         <Label id="role-label" layoutX="225.0" layoutY="73.0" text="Staff" />
+         <Label id="role-label" layoutX="225.0" layoutY="73.0" text="Admin" />
          <Label id="name-label" fx:id="lblName" layoutX="225.0" layoutY="170.0" prefHeight="17.0" prefWidth="160.0" text="Name" />
       </Pane>
       <Pane prefHeight="124.0" prefWidth="450.0">
@@ -37,16 +37,16 @@
          </Button>
       </Pane>
       <Pane prefHeight="124.0" prefWidth="200.0">
-         <Button fx:id="btnOrders" alignment="BASELINE_LEFT" layoutY="1.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="450.0" styleClass="side-button" text="    Orders">
+         <Button fx:id="btnSchedule" alignment="BASELINE_LEFT" layoutY="1.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="450.0" styleClass="side-button" text="     Schedule">
             <graphic>
-               <FontAwesomeIconView glyphName="COFFEE" />
+               <FontAwesomeIconView glyphName="CALENDAR" />
             </graphic>
          </Button>
       </Pane>
       <Pane id="last-layout" prefHeight="200.0" prefWidth="200.0">
-         <Button id="last-button" fx:id="btnSchedules" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="74.0" prefWidth="450.0" text="     Schedule">
+         <Button id="last-button" fx:id="btnRevenue" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="74.0" prefWidth="450.0" text="    Revenue">
             <graphic>
-               <FontAwesomeIconView glyphName="CALENDAR" />
+               <FontAwesomeIconView glyphName="MONEY" />
             </graphic>
          </Button>
          <Button id="logout-button" fx:id="btnLogout" layoutX="353.0" layoutY="78.0" mnemonicParsing="false">

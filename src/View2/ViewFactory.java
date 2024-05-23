@@ -1,5 +1,6 @@
 package View2;
 
+import Controller.AdminController;
 import Controller.StaffController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -9,6 +10,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class ViewFactory {
+    private AnchorPane adminComputersView;
+    private AnchorPane adminUsersView;
+
+    private AnchorPane adminStaffsView;
+    private AnchorPane adminRevenueView;
+    private AnchorPane adminScheduleView;
     private AnchorPane staffComputersView;
     private AnchorPane staffUsersView;
 
@@ -16,13 +23,23 @@ public class ViewFactory {
     private AnchorPane staffOrdersView;
     private AnchorPane staffScheduleView;
     private final StringProperty staffSelectedMenuItem;
+    private final StringProperty adminSelectedMenuItem;
     public ViewFactory() {
         this.staffSelectedMenuItem = new SimpleStringProperty("");
+        this.adminSelectedMenuItem = new SimpleStringProperty("");
     }
 
     public StringProperty getStaffSelectedMenuItem (){
         return staffSelectedMenuItem;
     }
+    public StringProperty getAdminSelectedMenuItem (){
+        return adminSelectedMenuItem;
+    }
+
+
+    /*
+    * Staff Screen and View
+    */
 
     public AnchorPane getStaffStaffsView() {
         if (staffStaffsView == null) {
@@ -79,8 +96,74 @@ public class ViewFactory {
         return staffUsersView;
     }
 
+    /*
+            Admin Screen and View
+
+     */
+    public AnchorPane getAdminComputersView() {
+        if (adminComputersView == null) {
+            try {
+                adminComputersView = new FXMLLoader(getClass().getResource("fxml/AdminComputers.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return adminComputersView;
+    }
+
+    public AnchorPane getAdminStaffsView() {
+        if (adminStaffsView == null) {
+            try {
+                adminStaffsView = new FXMLLoader(getClass().getResource("fxml/AdminStaffs.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return adminStaffsView;
+    }
+    public AnchorPane getAdminUsersView() {
+        if (adminUsersView == null) {
+            try {
+                adminUsersView = new FXMLLoader(getClass().getResource("fxml/AdminUsers.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return adminUsersView;
+    }
+    public AnchorPane getAdminRevenueView() {
+        if (adminRevenueView == null) {
+            try {
+                adminRevenueView = new FXMLLoader(getClass().getResource("fxml/AdminRevenue.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return adminRevenueView;
+    }
+    public AnchorPane getAdminScheduleView() {
+        if (adminScheduleView == null) {
+            try {
+                adminScheduleView = new FXMLLoader(getClass().getResource("fxml/AdminSchedule.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return adminScheduleView;
+    }
+
+
+
+
     public void showLoginWindow () {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/Login.fxml"));
+        createStage(loader);
+    }
+
+    public void showAdminWindow () {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/AdminView.fxml"));
+        AdminController adminController = new AdminController();
+        loader.setController(adminController);
         createStage(loader);
     }
 
