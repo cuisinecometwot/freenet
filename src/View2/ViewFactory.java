@@ -1,26 +1,82 @@
 package View2;
 
-import Controller.StaffComputers;
 import Controller.StaffController;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class ViewFactory {
-    private AnchorPane computersView;
+    private AnchorPane staffComputersView;
+    private AnchorPane staffUsersView;
 
-    public ViewFactory() {}
+    private AnchorPane staffStaffsView;
+    private AnchorPane staffOrdersView;
+    private AnchorPane staffScheduleView;
+    private final StringProperty staffSelectedMenuItem;
+    public ViewFactory() {
+        this.staffSelectedMenuItem = new SimpleStringProperty("");
+    }
 
-    public AnchorPane getComputersView() {
-        if (computersView == null) {
+    public StringProperty getStaffSelectedMenuItem (){
+        return staffSelectedMenuItem;
+    }
+
+    public AnchorPane getStaffStaffsView() {
+        if (staffStaffsView == null) {
             try {
-                computersView = new FXMLLoader(getClass().getResource("/fxml/StaffComuters.fxml")).load();
+                staffStaffsView = new FXMLLoader(getClass().getResource("fxml/StaffStaffs.fxml")).load();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        return computersView;
+        return staffStaffsView;
+    }
+
+    public AnchorPane getStaffOrdersView() {
+        if (staffOrdersView == null) {
+            try {
+                staffOrdersView = new FXMLLoader(getClass().getResource("fxml/StaffOrders.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return staffOrdersView;
+    }
+
+    public AnchorPane getStaffScheduleView () {
+        if (staffScheduleView == null) {
+            try {
+                staffScheduleView = new FXMLLoader(getClass().getResource("fxml/StaffSchedule.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return staffScheduleView;
+    }
+
+    public AnchorPane getStaffComputersView() {
+        if (staffComputersView == null) {
+            try {
+                staffComputersView = new FXMLLoader(getClass().getResource("fxml/StaffComputers.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return staffComputersView;
+    }
+
+    public AnchorPane getStaffUsersView() {
+        if (staffUsersView == null) {
+            try {
+                staffUsersView = new FXMLLoader(getClass().getResource("fxml/StaffUsers.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return staffUsersView;
     }
 
     public void showLoginWindow () {
@@ -34,6 +90,8 @@ public class ViewFactory {
         loader.setController(staffController);
         createStage(loader);
     }
+
+
     private void createStage (FXMLLoader loader) {
         Scene scene = null;
         try {
@@ -46,4 +104,8 @@ public class ViewFactory {
         stage.setTitle("Freenet");
         stage.show();
     }
+    public void closeStage (Stage stage) {
+        stage.close();
+    }
+
 }
