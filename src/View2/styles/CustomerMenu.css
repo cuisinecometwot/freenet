@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'Itim';
+    src: url('../font/Itim-Regular.ttf');
+}
+
+.menu-container {
+    -fx-background-color: #FFFFFF; /* Background color */
+     -fx-border-color: #E9BE9E;   /* Border color */
+     -fx-border-width: 5px 5px 5px 5px;     /* Border width */
+     -fx-border-style: solid;   /* Border style */
+}
+
+.menu-container Pane {
+    -fx-background-color: #DD590F;
+}
+
+.timer-container {
+    -fx-border-color: #E9BE9E;   /* Border color */
+    -fx-background-color: #FFFFFF;
+     -fx-border-width: 5px 5px 5px 5px;     /* Border width */
+     -fx-border-style: solid;   /* Border style */
+     -fx-font-size: 24px;
+}
+
+#user-name {
+    -fx-font-size: 24px; /* Font size */
+    -fx-font-family: "Itim"; /* Font family */
+    -fx-text-fill: #000000; /* Text color */
+}
+
+.label-balance {
+    -fx-text-fill: #000000;
+    -fx-font-family: Itim;
+    -fx-font-size: 15px;
+}
+
+.first-button {
+    -fx-font-size: 24px; /* Font size */
+    -fx-font-family: "Itim"; /* Font family */
+    -fx-text-fill: #000000; /* Text color */
+    -fx-background-color: #FFFFFF; /* Background color */
+     -fx-border-color: E9BE9E;   /* Border color */
+     -fx-border-width: 5px 0px 5px 0px;     /* Border width */
+     -fx-border-style: solid;   /* Border style */
+     -fx-align : BASELINE_LEFT;
+     -fx-padding: 0 0 0 20px;
+}
+.last-button {
+    -fx-font-size: 24px; /* Font size */
+    -fx-font-family: "Itim"; /* Font family */
+    -fx-text-fill: #000000; /* Text color */
+    -fx-background-color: #FFFFFF; /* Background color */
+    -fx-align : BASELINE_LEFT;
+    -fx-padding: 0 0 0 20px;
+}
+
+.logout-button {
+    -fx-background-color: #FFFFFF;
+}
+
+

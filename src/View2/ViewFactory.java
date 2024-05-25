@@ -5,8 +5,10 @@ import Controller.StaffController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class ViewFactory {
@@ -153,6 +155,49 @@ public class ViewFactory {
     }
 
 
+
+
+
+    /*
+    *
+    * Customer part
+    * */
+
+    public void showCustomerAccInfo () {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/CustomerAccInfo.fxml"));
+        createStage(loader);
+    }
+
+    public void showCustomerOrderView () {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/CustomerOrder.fxml"));
+        createStage(loader);
+    }
+
+
+    /*
+            Role GUI
+
+
+     */
+
+    public void showCustomerMenu () {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/CustomerMenu.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+
+        stage.setScene(scene);
+        stage.setTitle("Freenet");
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX(screenBounds.getWidth() - 400);
+        stage.setY(20);
+        stage.show();
+        stage.show();
+    }
 
 
     public void showLoginWindow () {

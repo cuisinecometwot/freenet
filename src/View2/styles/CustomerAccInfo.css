@@ -1,0 +1,42 @@
+@font-face {
+    font-family: 'Itim';
+    src: url('../font/Itim-Regular.ttf');
+}
+
+.container {
+    -fx-background-color: #FFFFFF; /* Background color */
+    -fx-border-color: #E9BE9E;   /* Border color */
+    -fx-border-width: 5px 5px 5px 5px;     /* Border width */
+    -fx-border-style: solid;   /* Border style */
+}
+
+.title-label {
+    -fx-font-size: 24px; /* Font size */
+    -fx-font-family: "Itim"; /* Font family */
+    -fx-text-fill: #000000; /* Text color */
+}
+
+.error-label {
+    -fx-text-fill: #F44343;
+}
+
+.container Label {
+    -fx-font-size: 16px;
+}
+
+.container Button {
+    
+}
+
+.order-button {
+    -fx-font-size: 14px;
+    -fx-text-fill: #000000;
+    -fx-background-color: #DD590F;
+
+}
+
+.cancel-button {
+    -fx-font-size: 14px; /* Font size */
+    -fx-text-fill: #000000; /* Text color */
+    -fx-background-color: #F44343; /* Background color */
+}
