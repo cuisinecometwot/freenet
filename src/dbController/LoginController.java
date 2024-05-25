@@ -13,7 +13,7 @@ public class LoginController {
         try {
             Connection conn = DBConnection.getDBConnection().getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setObject(1, '%' + username);
+            statement.setObject(1, "%." + username);
             ResultSet result = statement.executeQuery();
 
             if (result.next()) {
