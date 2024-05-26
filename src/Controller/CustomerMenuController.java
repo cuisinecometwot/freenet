@@ -18,10 +18,13 @@ public class CustomerMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        usernameLabel.setText(Model.getInstance().getCustomer().getUsername());
+        balanceLabel.setText(String.valueOf(Model.getInstance().getCustomer().getBalance()));
         addListener();
     }
 
     public void addListener () {
+
         btnAccountInfo.setOnAction(event -> onInfo());
         btnOrder.setOnAction(event -> onOrder());
     }

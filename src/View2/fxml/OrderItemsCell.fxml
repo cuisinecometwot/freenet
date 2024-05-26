@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="37.0" prefWidth="190.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <Label fx:id="lblOrderItemName" layoutX="5.0" layoutY="10.0" prefHeight="18.0" prefWidth="137.0" text="Label" />
+   <Label fx:id="lblQuantity" layoutX="142.0" layoutY="10.0" prefHeight="18.0" prefWidth="44.0" text="Label" />
+</AnchorPane>

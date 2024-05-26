@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Customer;
 import Model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -72,8 +73,11 @@ public class LoginController implements Initializable{
     }
 
     private void onLogin(){
+        Customer customer = new Customer("kazuma","Duy","duy@sonthomg","0123",25000, "123456");
+        Model.getInstance().setCustomer(customer);
         Stage stage =   (Stage) btnLogin.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
-        Model.getInstance().getViewFactory().showStaffWindow();
+        Model.getInstance().getViewFactory().showCustomerMenu();
+
     }
 }

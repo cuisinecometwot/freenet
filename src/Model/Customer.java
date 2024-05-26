@@ -8,8 +8,13 @@ public class Customer {
     private String username;
     private String password;
 
-    public Customer(){
-
+    public Customer(String username, String name, String email, String phoneNum, int balance, String password){
+        this.balance = balance;
+        this.name = name;
+        this.username = username;
+        this. password = password;
+        this.email = email;
+        this.phoneNum = phoneNum;
     }
 
 

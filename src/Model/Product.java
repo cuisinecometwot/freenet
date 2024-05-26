@@ -1,11 +1,12 @@
 package Model;
 
 public class Product {
-    String name;
-    int cost;
+    private String name;
+    private int cost;
 
-    public Product(){
-
+    public Product(String name, int cost){
+        this.name = name;
+        this.cost = cost;
     }
 
     public String getName() {
@@ -20,7 +21,4 @@ public class Product {
         return cost;
     }
 
-    public void setCost(int cost) {
-        this.cost = cost;
-    }
 }

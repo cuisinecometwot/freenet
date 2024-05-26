@@ -17,6 +17,14 @@
     -fx-background-color: #FFFFFF;
 }
 
+.product-list-view {
+       -fx-background-color: transparent;
+           -fx-border-color: transparent;
+           -fx-padding: 0;
+           -fx-background-color: #FFFFFF;
+}
+
+
 .order-button {
     -fx-font-size: 24px; /* Font size */
     -fx-font-family: "Itim"; /* Font family */
@@ -42,7 +50,7 @@
     -fx-padding: 0 0 0 10px;
 }
 
-.menu-container Label {
+.menu-container .labe {
     -fx-font-size: 24px; /* Font size */
     -fx-font-family: "Itim"; /* Font family */
     -fx-text-fill: #000000; /* Text color */

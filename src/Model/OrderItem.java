@@ -20,4 +20,11 @@ public class OrderItem {
         subCost = quantity * product.getCost();
         return subCost;
     }
+
+    public int getQuantity() {
+        return this.quantity;
+    }
+    public void setQuantity (int quantity) {
+        this.quantity = quantity;
+    }
 }

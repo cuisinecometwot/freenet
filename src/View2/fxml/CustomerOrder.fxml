@@ -6,37 +6,23 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane prefHeight="673.0" prefWidth="880.0" styleClass="menu-container" stylesheets="@../styles/CustomerOrderView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomerOrderController">
-   <children>
-      <ListView layoutX="650.0" layoutY="49.0" prefHeight="426.0" prefWidth="210.0" />
-      <ScrollPane layoutX="21.0" layoutY="17.0" prefHeight="638.0" prefWidth="612.0">
-         <content>
-            <VBox prefHeight="636.0" prefWidth="610.0" spacing="10.0" styleClass="Vbox">
-               <children>
-                  <Label text="Drink" />
-                  <FlowPane hgap="20.0" prefHeight="314.0" prefWidth="610.0" vgap="20.0">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </FlowPane>
-                  <Label prefHeight="30.0" prefWidth="119.0" text="Food" />
-                  <FlowPane hgap="20.0" prefHeight="250.0" prefWidth="568.0" vgap="20.0">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </FlowPane>
-               </children>
-            </VBox>
-         </content>
-      </ScrollPane>
-      <Button layoutX="740.0" layoutY="575.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="120.0" styleClass="order-button" text="Order" />
-      <Button layoutX="650.0" layoutY="575.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="77.0" styleClass="delete-button" text="Delete" />
-      <Label layoutX="650.0" layoutY="17.0" text="Order" />
-      <Label layoutX="650.0" layoutY="497.0" text="Total cost:" />
-      <Label layoutX="650.0" layoutY="528.0" prefHeight="34.0" prefWidth="210.0" text="Cost" />
-   </children>
+   <ListView fx:id="lvOrder" layoutX="650.0" layoutY="49.0" prefHeight="426.0" prefWidth="210.0" />
+   <ScrollPane layoutX="21.0" layoutY="17.0" prefHeight="638.0" prefWidth="612.0">
+      <VBox prefHeight="636.0" prefWidth="610.0" spacing="10.0" styleClass="Vbox">
+         <Label styleClass="labe" text="Food &amp; Drink" />
+         <ListView fx:id="lvDrink" prefHeight="594.0" prefWidth="610.0" styleClass="product-list-view">
+            <padding>
+               <Insets right="10.0" />
+            </padding></ListView>
+      </VBox>
+   </ScrollPane>
+   <Button fx:id="btnOrder" layoutX="650.0" layoutY="592.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="210.0" styleClass="order-button" text="Order" />
+   <Label layoutX="650.0" layoutY="17.0" styleClass="labe" text="Order" />
+   <Label layoutX="650.0" layoutY="487.0" styleClass="labe" text="Total cost:" />
+   <Label fx:id="lblTotal" layoutX="650.0" layoutY="518.0" prefHeight="34.0" prefWidth="157.0" styleClass="labe" text="Cost" />
+   <Label layoutX="814.0" layoutY="520.0" styleClass="labe" text="VND" />
+   <Label fx:id="lblError" layoutX="650.0" layoutY="561.0" textFill="#dc2e2e" />
 </AnchorPane>

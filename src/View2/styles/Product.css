@@ -1,0 +1,14 @@
+.container {
+    -fx-border-radius: 7px;
+    -fx-border-color: E9BE9E;   /* Border color */
+         -fx-border-width: 2px 2px 2px 2px;     /* Border width */
+         -fx-border-style: solid;   /* Border style */
+         /*-fx-border-radius: 5px;*/
+}
+.container Button {
+    -fx-text-fill: #000000; /* Text color */
+    -fx-background-color: #DD590F; /* Background color */
+}
+.label-name {
+}
+.label-cost {}
