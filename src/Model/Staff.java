@@ -9,8 +9,16 @@ public class Staff {
     private String username;
     private String password;
 
-    public Staff(){
-
+    public Staff(String username, String name){
+        super();
+        this.username = username;
+        this.name = name;
+    }
+    public Staff(String username, String name, String role){
+        super();
+        this.username = username;
+        this.name = name;
+        this.role = role;
     }
 
     public String getName() {
@@ -69,4 +77,3 @@ public class Staff {
         this.password = password;
     }
 }
-

@@ -17,6 +17,16 @@ public class Customer {
         this.phoneNum = phoneNum;
     }
 
+    public Customer(String username, String name, int balance){
+        this.username = username;
+        this.name = name;
+        this.balance = 0;
+        if (balance > 0) this.balance = balance;
+    }
+    public void addBalance(int amount) {
+        if (amount > 0) this.balance += amount;
+    }
+
 
     public String getName() {
         return name;

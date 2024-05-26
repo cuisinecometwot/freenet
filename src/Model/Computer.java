@@ -1,9 +1,24 @@
 package Model;
 
+
+
 public class Computer {
-    String hostID;
-    String username;
-    String status;
+    private String hostID;
+    private String username;
+    private String status;
+    private Session session;
+
+    public Computer(String hostID, String status) {
+        this.hostID = hostID;
+        this.status = status;
+        this.session = null;
+    }
+
+    public Computer(String hostID, String status, String username) {
+        this.hostID = hostID;
+        this.status = status;
+        this.username = username;
+    }
 
     public String getHostID() {
         return hostID;
