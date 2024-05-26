@@ -1,11 +1,17 @@
 package Controller;
 
 import Model.Model;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 public class CustomerMenuController implements Initializable {
@@ -14,19 +20,51 @@ public class CustomerMenuController implements Initializable {
     public Label balanceLabel;
     public Button btnOrder;
     public Button btnAccountInfo;
+    public Button btnLogout;
+
+    private int secondsRemaining;
+
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        updateTimer();
         usernameLabel.setText(Model.getInstance().getCustomer().getUsername());
         balanceLabel.setText(String.valueOf(Model.getInstance().getCustomer().getBalance()));
         addListener();
+    }
+    public void updateTimer () {
+        secondsRemaining = Model.getInstance().getCustomer().getBalance()* 3600 /5000;
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            secondsRemaining--;
+            updateTimerLabel();
+            if (secondsRemaining <= 0) {
+                onLogout();
+                ((Timeline)event.getSource()).stop(); // Stop the timeline when countdown is finished
+            } else if (secondsRemaining % 5 == 0) {
+                Model.getInstance().getCustomer().setBalance(Model.getInstance().getCustomer().getBalance() - 5*5000/3600);
+                balanceLabel.setText(String.valueOf(Model.getInstance().getCustomer().getBalance()));
+            }
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
+    private void updateTimerLabel() {
+        int hours = secondsRemaining / 3600;
+        int minutes = (secondsRemaining % 3600) / 60;
+        int seconds = secondsRemaining % 60;
+        timerLabel.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
     }
 
     public void addListener () {
 
         btnAccountInfo.setOnAction(event -> onInfo());
         btnOrder.setOnAction(event -> onOrder());
+        btnLogout.setOnAction(event -> onLogout());
+        balanceLabel.textProperty().addListener((observable, oldValue, newValue) -> {
+            secondsRemaining = Model.getInstance().getCustomer().getBalance()* 3600 /5000;
+            updateTimerLabel();
+        });
     }
 
     private void onInfo () {
@@ -36,4 +74,10 @@ public class CustomerMenuController implements Initializable {
         Model.getInstance().getViewFactory().showCustomerOrderView();
     }
 
+    private void onLogout() {
+        LocalDateTime logoutDate = LocalDateTime.now();
+        System.out.println(logoutDate);
+        Stage stage =   (Stage) btnLogout.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+    }
 }

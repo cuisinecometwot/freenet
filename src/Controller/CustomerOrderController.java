@@ -25,6 +25,7 @@ public class CustomerOrderController implements Initializable {
     public ListView<Product> lvDrink;
     public Button btnOrder;
     public Label lblError;
+    public CustomerMenuController customerMenuController = new CustomerMenuController();
 
 
     @Override
@@ -83,6 +84,7 @@ public class CustomerOrderController implements Initializable {
             visiblePause.play();
         } else {
             Model.getInstance().setCustomerOrder(new Order(Model.getInstance().orderItems));
+            Model.getInstance().getCustomer().setBalance(Model.getInstance().getCustomer().getBalance() - Integer.parseInt(lblTotal.getText()) );
             /*for (OrderItem orderItem:Model.getInstance().getCustomerOrder().getOrderItems()) {
                 System.out.println(orderItem.productObject().getName());
             }*/

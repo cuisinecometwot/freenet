@@ -20,6 +20,9 @@ import javafx.stage.Window;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable{
@@ -75,6 +78,8 @@ public class LoginController implements Initializable{
     private void onLogin(){
         Customer customer = new Customer("kazuma","Duy","duy@sonthomg","0123",25000, "123456");
         Model.getInstance().setCustomer(customer);
+        LocalDateTime loginDate = LocalDateTime.now();
+        System.out.println(loginDate);
         Stage stage =   (Stage) btnLogin.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
         Model.getInstance().getViewFactory().showCustomerMenu();
