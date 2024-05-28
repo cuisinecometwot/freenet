@@ -1,11 +1,15 @@
 package Controller;
 
 import Model.Model;
+import dbController.CustomerController;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 public class StaffMenuController implements Initializable {
@@ -22,11 +26,13 @@ public class StaffMenuController implements Initializable {
         addListeners();
     }
     private void addListeners () {
+        lblName.setText(Model.getInstance().getStaff().getUsername());
         btnComputers.setOnAction(event -> onComputers());
         btnUsers.setOnAction(event -> onUsers());
         btnStaff.setOnAction(event -> onStaffs());
         btnOrders.setOnAction(event -> onOrders());
         btnSchedules.setOnAction(event -> onSchedule());
+        btnLogout.setOnAction(event -> onLogout());
     }
 
     private void onComputers () {
@@ -39,4 +45,10 @@ public class StaffMenuController implements Initializable {
     private void onStaffs () {Model.getInstance().getViewFactory().getStaffSelectedMenuItem().set("Staffs");}
     private void onOrders () {Model.getInstance().getViewFactory().getStaffSelectedMenuItem().set("Orders");}
     private void onSchedule () {Model.getInstance().getViewFactory().getStaffSelectedMenuItem().set("Schedule");}
+    private void onLogout() {
+        LocalDateTime logoutDate = LocalDateTime.now();
+        System.out.println(logoutDate);
+        Stage stage = (Stage) btnLogout.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+    }
 }

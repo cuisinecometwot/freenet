@@ -11,10 +11,10 @@
 
       </VBox>
    </ScrollPane>
-   <Label layoutX="69.0" layoutY="57.0" styleClass="label-label" text="HostID" AnchorPane.leftAnchor="69.0" AnchorPane.topAnchor="57.0" />
-   <Label layoutX="158.0" layoutY="57.0" styleClass="label-label" text="User name" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="57.0" />
-   <Label layoutX="300.0" layoutY="57.0" styleClass="label-label" text="Detail" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="57.0" />
-   <Label layoutX="460.0" layoutY="57.0" styleClass="label-label" text="Total" AnchorPane.leftAnchor="465.0" AnchorPane.topAnchor="57.0" />
+   <Label layoutX="40.0" layoutY="57.0" styleClass="label-label" text="Order Time" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="57.0" />
+   <Label layoutX="196.0" layoutY="57.0" styleClass="label-label" text="User name" AnchorPane.leftAnchor="196.0" AnchorPane.topAnchor="57.0" />
+   <Label layoutX="300.0" layoutY="57.0" styleClass="label-label" text="Status" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="57.0" />
+   <Label layoutX="470.0" layoutY="56.0" styleClass="label-label" text="Total" AnchorPane.leftAnchor="470.0" AnchorPane.topAnchor="56.0" />
    <Label layoutX="450.0" layoutY="57.0" styleClass="label-label" text="Action" AnchorPane.leftAnchor="600.0" AnchorPane.topAnchor="57.0" />
-   <Label layoutX="35.0" layoutY="23.0" text="Pending Order(s)" />
+   <Label layoutX="35.0" layoutY="23.0" />
 </AnchorPane>

@@ -22,9 +22,9 @@ public class StaffStaffsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Create sample Staff objects
         // TODO : query database
-        Staff staff1 = new Staff("trunganhnee", "Trung Anh", "Admin");
-        Staff staff2 = new Staff("linhcuteeee", "Linh Doan", "Helpdesk");
-        Staff staff3 = new Staff("beducdenday", "Huu Duc", "Cashier");
+        Staff staff1 = new Staff("trunganhnee", "Trung Anh", "tabeos@gmail.com","01234567",400000, "123456");
+        Staff staff2 = new Staff("linhcuteeee", "Linh Doan", "Helpdesk","01234567",400000, "123456");
+        Staff staff3 = new Staff("beducdenday", "Huu Duc", "Cashier","01234567",400000, "123456");
 
         // Add staffs to the observable list
         staffList.addAll(staff1, staff2, staff3);
@@ -52,10 +52,10 @@ public class StaffStaffsController implements Initializable {
         staffNameLabel.setLayoutY(16);
         staffNameLabel.getStyleClass().add("computer-id");
 
-        Label staffRoleLabel = new Label(staff.getRole());
+        /*Label staffRoleLabel = new Label(staff.getRole());
         staffRoleLabel.setLayoutX(400);
         staffRoleLabel.setLayoutY(16);
-        staffRoleLabel.getStyleClass().add("computer-id");
+        staffRoleLabel.getStyleClass().add("computer-id");*/
 
         AnchorPane.setLeftAnchor(staffIdLabel, 25.0);
         AnchorPane.setTopAnchor(staffIdLabel, 16.0);
@@ -63,11 +63,11 @@ public class StaffStaffsController implements Initializable {
         AnchorPane.setLeftAnchor(staffNameLabel, 200.0);
         AnchorPane.setTopAnchor(staffNameLabel, 16.0);
 
-        AnchorPane.setLeftAnchor(staffRoleLabel, 400.0);
-        AnchorPane.setTopAnchor(staffRoleLabel, 16.0);
+        /*AnchorPane.setLeftAnchor(staffRoleLabel, 400.0);
+        AnchorPane.setTopAnchor(staffRoleLabel, 16.0);*/
 
         // Add Labels to the AnchorPane
-        staffItem.getChildren().addAll(staffIdLabel, staffNameLabel, staffRoleLabel);
+        staffItem.getChildren().addAll(staffIdLabel, staffNameLabel);
 
         return staffItem;
     }

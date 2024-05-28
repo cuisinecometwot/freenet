@@ -1,11 +1,15 @@
 package Controller;
 
+import Model.Model;
 import Model.Order;
 import Model.OrderItem;
 import Model.Product;
 
+import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
+import dbController.OrderController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -29,55 +33,42 @@ import java.util.ResourceBundle;
 public class StaffOrdersController implements Initializable {
     @FXML
     public VBox orderListVBox;
-
-    private final ObservableList<Order> orderList = FXCollections.observableArrayList(); // ObservableList for ListView items
+    // ObservableList for ListView items
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Create sample Order objects
         // TODO : query database
-        Order order1 = new Order(
-                Arrays.asList(
-                        new OrderItem(new Product("Bread", 20000), 2),
-                        new OrderItem(new Product("Fried Rice", 40000), 1)
-                ));
-        Order order2 = new Order(
-                Arrays.asList(
-                        new OrderItem(new Product("Juice", 15000), 1)
-                ));
-        Order order3 = new Order(
-                Arrays.asList(
-                        new OrderItem(new Product("Sausage", 10000), 3),
-                        new OrderItem(new Product("Bottle of Beer", 20000), 3)
-                ));
-
-        // Add orders to the observable list
-        orderList.addAll(order1, order2, order3);
-
-        // Loop through orderList and create AnchorPanes dynamically
-        for (Order order : orderList) {
-            AnchorPane orderItem = createOrderItem(order);
-            orderListVBox.getChildren().add(orderItem);
+        try {
+            for (Order order : Model.getInstance().getOrderList()) {
+                AnchorPane orderItem = createOrderItem(order);
+                orderListVBox.getChildren().add(orderItem);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
     private AnchorPane createOrderItem(Order order) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd HH:mm");
         AnchorPane orderItem = new AnchorPane();
         orderItem.prefHeight(50.0);
         orderItem.prefWidth(650.0);
         orderItem.getStyleClass().add("anchor-pane");
 
-        // Create Labels for ID, Status, and Username
-        Label orderIdLabel = new Label(order.getHostID());
+        // Create Labels for Time, Status, and Username
+        Label orderIdLabel = new Label(order.getTime().format(formatter).toString());
         orderIdLabel.setLayoutX(25);
         orderIdLabel.setLayoutX(16);
         orderIdLabel.getStyleClass().add("computer-id");
 
         Label orderUsernameLabel = new Label(order.getUsername());
-        orderUsernameLabel.setLayoutX(216);
+        orderUsernameLabel.setLayoutX(250);
         orderUsernameLabel.setLayoutY(16);
         orderUsernameLabel.getStyleClass().add("computer-id");
 
-        Label orderDetailLabel = new Label(order.toStringShort());
+        Label orderDetailLabel = new Label(order.getStatus());
         orderDetailLabel.setLayoutX(400);
         orderDetailLabel.setLayoutY(16);
         orderDetailLabel.getStyleClass().add("computer-id");
@@ -86,16 +77,6 @@ public class StaffOrdersController implements Initializable {
         orderTotalLabel.setLayoutX(450);
         orderTotalLabel.setLayoutY(16);
         orderTotalLabel.getStyleClass().add("computer-id");
-
-        /*
-         *  Create See More Button for more information
-         *  TODO: The popup looks awful! "See More" button itself too. Need correction.
-         */
-        Button moreButton = new Button("Handle");
-        moreButton.setLayoutX(550);
-        moreButton.setLayoutY(16);
-
-
         Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationAlert.setHeaderText("Confirm Order");
         confirmationAlert.setContentText("Are you sure you want to accept "
@@ -109,6 +90,17 @@ public class StaffOrdersController implements Initializable {
         Alert infoAlert = new Alert(Alert.AlertType.INFORMATION);
         infoAlert.setHeaderText(order.getUsername() + "'s order");
         infoAlert.setContentText(order.toString() + "\nTotal: " + order.getTotalCost());
+        /*
+         *  Create See More Button for more information
+         *  TODO: The popup looks awful! "See More" button itself too. Need correction.
+         */
+        Button moreButton = new Button("  View   ");
+        if (order.getStatus().equals("Pending"))  {
+            moreButton.setText("Handle");
+        }
+        moreButton.setLayoutX(550);
+        moreButton.setLayoutY(16);
+
 
         moreButton.setOnAction(event -> {
             if (moreButton.getText() == "Handle") {
@@ -116,20 +108,27 @@ public class StaffOrdersController implements Initializable {
                     if (response == confirmButton) {
                         // no delete. just move to last index
                         // and mark it as accepted
-                        // No undo. But you can see order again.
-                        orderList.remove(order);
-                        orderList.add(order);
-                        orderItem.getStyleClass().remove("anchor-pane");
-                        orderItem.getStyleClass().add("anchor-pane-green");
+                        order.setStatus("Accepted");
+                        try {
+                            OrderController.changeOrderStatus(order, "Accepted");
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        } catch (ClassNotFoundException e) {
+                            throw new RuntimeException(e);
+                        }
                         orderListVBox.getChildren().remove(orderItem);
                         orderListVBox.getChildren().add(orderItem);
                         moreButton.setText("  View   ");
                     } else if (response == cancelButton) {
                         // same as above
-                        orderList.remove(order);
-                        orderList.add(order);
-                        orderItem.getStyleClass().remove("anchor-pane");
-                        orderItem.getStyleClass().add("anchor-pane-red");
+                        order.setStatus("Canceled");
+                        try {
+                            OrderController.changeOrderStatus(order, "Canceled");
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        } catch (ClassNotFoundException e) {
+                            throw new RuntimeException(e);
+                        }
                         orderListVBox.getChildren().remove(orderItem);
                         orderListVBox.getChildren().add(orderItem);
                         moreButton.setText("  View   ");
@@ -144,7 +143,7 @@ public class StaffOrdersController implements Initializable {
         AnchorPane.setLeftAnchor(orderIdLabel, 25.0);
         AnchorPane.setTopAnchor(orderIdLabel, 16.0);
 
-        AnchorPane.setLeftAnchor(orderUsernameLabel, 150.0);
+        AnchorPane.setLeftAnchor(orderUsernameLabel, 170.0);
         AnchorPane.setTopAnchor(orderUsernameLabel, 16.0);
 
         AnchorPane.setLeftAnchor(orderDetailLabel, 300.0);
@@ -154,7 +153,7 @@ public class StaffOrdersController implements Initializable {
         AnchorPane.setTopAnchor(orderTotalLabel, 16.0);
 
         AnchorPane.setLeftAnchor(moreButton, 550.0);
-        AnchorPane.setTopAnchor(moreButton, 16.0);
+        AnchorPane.setTopAnchor(moreButton, 12.0);
 
 
         // Add Labels to the AnchorPane

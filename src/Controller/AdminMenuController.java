@@ -4,8 +4,10 @@ import Model.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 public class AdminMenuController implements Initializable {
@@ -18,6 +20,7 @@ public class AdminMenuController implements Initializable {
     public Button btnSchedule;
     public Button btnRevenue;
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        lblName.setText(Model.getInstance().getAdmin().getUsername());
         addListeners();
     }
     private void addListeners () {
@@ -26,6 +29,7 @@ public class AdminMenuController implements Initializable {
         btnStaff.setOnAction(event -> onStaffs());
         btnRevenue.setOnAction(event -> onRevenue());
         btnSchedule.setOnAction(event -> onSchedule());
+        btnLogout.setOnAction(event -> onLogout());
     }
 
     private void onComputers () {
@@ -38,5 +42,11 @@ public class AdminMenuController implements Initializable {
     private void onStaffs () {Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set("Staffs");}
     private void onRevenue () {Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set("Revenue");}
     private void onSchedule () {Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set("Schedule");}
+    private void onLogout() {
+        LocalDateTime logoutDate = LocalDateTime.now();
+        System.out.println(logoutDate);
+        Stage stage = (Stage) btnLogout.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+    }
 }
 

@@ -3,8 +3,9 @@ package Model;
 public class Product {
     private String name;
     private int cost;
-
-    public Product(String name, int cost){
+    private int id;
+    public Product(int id ,String name, int cost){
+        this.id =id;
         this.name = name;
         this.cost = cost;
     }
@@ -21,4 +22,7 @@ public class Product {
         return cost;
     }
 
+    public int getId() {
+        return id;
+    }
 }

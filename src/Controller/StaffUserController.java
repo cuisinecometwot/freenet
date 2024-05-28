@@ -1,6 +1,8 @@
 package Controller;
 
 import Model.Customer;
+import Model.Model;
+import dbController.CustomerController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,27 +16,20 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class StaffUserController implements Initializable {
     @FXML
     public VBox customerListVBox;
 
-    private final ObservableList<Customer> customerList = FXCollections.observableArrayList(); // ObservableList for ListView items
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Create sample customer objects
         // TODO : query database
-        Customer customer1 = new Customer("huuduc2109", "Be Duc dep trai", "duc@mail", "01234567", 30000, "12345");
-        Customer customer2 = new Customer("kazumaaa", "Duy Vu","kazu@mail", "01234567", 30000, "12345");
-        Customer customer3 = new Customer("gialong888", "Dragon King","l@mail", "01234567", 30000, "12345");
-
-        // Add customers to the observable list
-        customerList.addAll(customer1, customer2, customer3);
 
         // Loop through customerList and create AnchorPanes dynamically
-        for (Customer customer : customerList) {
+        for (Customer customer : Model.getInstance().getCustomerList()) {
             AnchorPane customerItem = createCustomerItem(customer);
             customerListVBox.getChildren().add(customerItem);
         }
@@ -90,6 +85,13 @@ public class StaffUserController implements Initializable {
                         customerBalanceLabel.setText("" + customer.getBalance());
                         amountTextField.setText("");
                         // TODO: Update customer balance in database (assuming database connection exists)
+                        try {
+                            CustomerController.updateCustomer(customer);
+                        } catch (ClassNotFoundException e) {
+                            throw new RuntimeException(e);
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 });
 

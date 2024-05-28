@@ -2,6 +2,10 @@ package Controller;
 
 import Model.Customer;
 import Model.Model;
+import Model.User;
+import Model.Staff;
+import Model.Admin;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -72,17 +76,42 @@ public class LoginController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         btnLogin.setOnAction(event -> onLogin());
     }
 
     private void onLogin(){
-        /*Customer customer = new Customer("kazuma","Duy","duy@sonthomg","0123",25000, "123456");
-        Model.getInstance().setCustomer(customer);
-        LocalDateTime loginDate = LocalDateTime.now();
-        System.out.println(loginDate);*/
-        Stage stage =   (Stage) btnLogin.getScene().getWindow();
-        Model.getInstance().getViewFactory().closeStage(stage);
-        Model.getInstance().getViewFactory().showStaffWindow();
+        String username = tfUsername.getText();
+        String password = tfPassword.getText();
+        if(username.isEmpty() || password.isEmpty()){
+            lbError.setText("Error: Missing field text");
+            lbError.setVisible(true);
+        }else{
+            String result = log.login(username, password);
+            switch (result) {
+                case "customer" -> {
 
+                    LocalDateTime loginDate = LocalDateTime.now();
+                    System.out.println(loginDate);
+                    Stage stage =   (Stage) btnLogin.getScene().getWindow();
+                    Model.getInstance().getViewFactory().closeStage(stage);
+                    Model.getInstance().getViewFactory().showCustomerMenu();
+                }
+                case "staff" -> {
+                    Stage stage =   (Stage) btnLogin.getScene().getWindow();
+                    Model.getInstance().getViewFactory().closeStage(stage);
+                    Model.getInstance().getViewFactory().showStaffWindow();
+                }
+                case "admin" -> {
+                    Stage stage =   (Stage) btnLogin.getScene().getWindow();
+                    Model.getInstance().getViewFactory().closeStage(stage);
+                    Model.getInstance().getViewFactory().showAdminWindow();
+                }
+                default -> {
+                    lbError.setText("Error: Invalid account");
+                    lbError.setVisible(true);
+                }
+            }
+        }
     }
 }

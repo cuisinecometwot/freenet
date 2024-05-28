@@ -1,21 +1,39 @@
 package Model;
 
 import java.util.List;
+import java.time.LocalDateTime;
+
 
 public class Order {
 
     private List<OrderItem> orderItems;
     private String hostID;
+    private String status;
     private String username;
     private int totalCost = 0;
+
+    private LocalDateTime time;
+
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
 
     public Order(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
         for (OrderItem orderItem:orderItems) {
             totalCost += orderItem.getCost();
         }
+        this.time = LocalDateTime.now();
+        this.status = "Pending";
+        this.username = Model.getInstance().getCustomer().getUsername();
     }
-    public Order(String hostID, String username, List<OrderItem> list) {
+
+    public Order(String hostID, String username,LocalDateTime time, List<OrderItem> list, String status) {
         this.hostID = hostID;
         this.username = username;
         this.orderItems = list;
@@ -24,6 +42,8 @@ public class Order {
             totalCost += item.getCost();
         }
         this.totalCost = totalCost;
+        this.status = status;
+        this.time = time;
     }
     public List<OrderItem> getOrderItems() {
         return orderItems;
@@ -76,5 +96,9 @@ public class Order {
         str = str.substring(0, str.length()-3); // remove last " + "
         if (str.length()>10) return str.substring(0, 10) + "...";
         return str;
+    }
+
+    public LocalDateTime getTime() {
+        return time;
     }
 }

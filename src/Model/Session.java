@@ -7,27 +7,19 @@ public class Session {
     private Timestamp startTime;
     private Timestamp endTime;
     private String username;
-    private int hourlyRate;
+    private int hostID;
     private int totalCost;
+
+    private int hourlyRate;
 
     // Constructor with start time
     public Session(String usr, Timestamp startTime) {
         this.startTime = startTime;
         this.endTime = null; // End time initially unknown
         this.username = usr;
-        this.hourlyRate = 10000; // default
-        this.totalCost = 0;
-
-    }
-
-    public Session(String usr, int hourlyRate, Timestamp startTime) {
-        this.startTime = startTime;
-        this.endTime = null;
-        this.username = usr;
-        this.hourlyRate = 10000;
-        if (hourlyRate > 0) this.hourlyRate = hourlyRate;
         this.totalCost = 0;
     }
+
 
     // Getters and Setters
     public Timestamp getStartTime() {
@@ -54,13 +46,12 @@ public class Session {
         this.username = username;
     }
 
-    // Method to calculate session duration (assuming endTime is set)
     public int calculateDurationInHours() {
         if (endTime == null) {
             throw new IllegalStateException("End time not set for this session.");
         }
         long differenceInMilliseconds = endTime.getTime() - startTime.getTime();
-        return (int) Math.ceil(differenceInMilliseconds / (1000 * 60 * 60));
+        return (int) Math.ceil((double) differenceInMilliseconds / (1000 * 60 * 60));
     }
 
     public int calculateSessionCost() {

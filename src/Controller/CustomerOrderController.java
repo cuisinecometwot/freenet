@@ -6,6 +6,7 @@ import Model.OrderItem;
 import Model.Product;
 import View2.OrderItemCellFactory;
 import View2.ProductCellFactory;
+import dbController.OrderController;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,6 +16,7 @@ import javafx.scene.control.ListView;
 import javafx.util.Duration;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
@@ -31,9 +33,14 @@ public class CustomerOrderController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        initProduct();
         lvDrink.setSelectionModel(null);
-        lvDrink.setItems(Model.getInstance().getProducts());
+        try {
+            lvDrink.setItems(Model.getInstance().getProducts());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         lvDrink.setCellFactory(e -> new ProductCellFactory(this));
         lvOrder.setItems(Model.getInstance().getOrderItems());
         lvOrder.setCellFactory(e -> new OrderItemCellFactory());
@@ -41,11 +48,8 @@ public class CustomerOrderController implements Initializable {
         addListener();
     }
 
-    public void initProduct () {
-        if (Model.getInstance().getProducts() == null) {
+    public void initProduct () throws SQLException, ClassNotFoundException {
             Model.getInstance().setProducts();
-        }
-
     }
 
     public void updateOrder(Product product, int quantity) {
@@ -71,10 +75,18 @@ public class CustomerOrderController implements Initializable {
     }
 
     public void addListener () {
-        btnOrder.setOnAction(event -> submitOrder());
+        btnOrder.setOnAction(event -> {
+            try {
+                submitOrder();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
-    public void submitOrder () {
+    public void submitOrder () throws SQLException, ClassNotFoundException {
         if (Model.getInstance().getCustomer().getBalance() < (Integer.parseInt(lblTotal.getText()) + 5000) ) {
             lblError.setText("Not enough balance!");
             PauseTransition visiblePause = new PauseTransition(Duration.seconds(3));
@@ -85,6 +97,9 @@ public class CustomerOrderController implements Initializable {
         } else {
             Model.getInstance().setCustomerOrder(new Order(Model.getInstance().orderItems));
             Model.getInstance().getCustomer().setBalance(Model.getInstance().getCustomer().getBalance() - Integer.parseInt(lblTotal.getText()) );
+            OrderController.addOrder(Model.getInstance().getCustomerOrder());
+            Model.getInstance().orderItems.clear();
+            Model.getInstance().setCustomerOrder(null);
             /*for (OrderItem orderItem:Model.getInstance().getCustomerOrder().getOrderItems()) {
                 System.out.println(orderItem.productObject().getName());
             }*/
