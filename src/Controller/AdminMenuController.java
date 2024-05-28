@@ -17,8 +17,6 @@ public class AdminMenuController implements Initializable {
     public Button btnStaff;
 
     public Button btnLogout;
-    public Button btnSchedule;
-    public Button btnRevenue;
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblName.setText(Model.getInstance().getAdmin().getUsername());
         addListeners();
@@ -27,8 +25,7 @@ public class AdminMenuController implements Initializable {
         btnComputers.setOnAction(event -> onComputers());
         btnUsers.setOnAction(event -> onUsers());
         btnStaff.setOnAction(event -> onStaffs());
-        btnRevenue.setOnAction(event -> onRevenue());
-        btnSchedule.setOnAction(event -> onSchedule());
+
         btnLogout.setOnAction(event -> onLogout());
     }
 

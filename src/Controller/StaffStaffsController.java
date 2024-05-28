@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Model;
 import Model.Staff;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,29 +11,30 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class StaffStaffsController implements Initializable {
     @FXML
     public VBox staffListVBox;
 
-    private final ObservableList<Staff> staffList = FXCollections.observableArrayList(); // ObservableList for ListView items
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Create sample Staff objects
         // TODO : query database
-        Staff staff1 = new Staff("trunganhnee", "Trung Anh", "tabeos@gmail.com","01234567",400000, "123456");
-        Staff staff2 = new Staff("linhcuteeee", "Linh Doan", "Helpdesk","01234567",400000, "123456");
-        Staff staff3 = new Staff("beducdenday", "Huu Duc", "Cashier","01234567",400000, "123456");
-
         // Add staffs to the observable list
-        staffList.addAll(staff1, staff2, staff3);
 
         // Loop through staffList and create AnchorPanes dynamically
-        for (Staff staff : staffList) {
-            AnchorPane staffItem = createStaffItem(staff);
-            staffListVBox.getChildren().add(staffItem);
+        try {
+            for (Staff staff : Model.getInstance().getStaffList()) {
+                AnchorPane staffItem = createStaffItem(staff);
+                staffListVBox.getChildren().add(staffItem);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
     private AnchorPane createStaffItem(Staff staff) {

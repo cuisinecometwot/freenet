@@ -12,7 +12,6 @@
       </VBox>
    </ScrollPane>
    <Label layoutX="69.0" layoutY="57.0" styleClass="label-label" text="User name" AnchorPane.leftAnchor="69.0" AnchorPane.topAnchor="57.0" />
-   <Label layoutX="258.0" layoutY="57.0" styleClass="label-label" text="Real name" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="57.0" />
-   <Label layoutX="434.0" layoutY="57.0" styleClass="label-label" text="Role" AnchorPane.leftAnchor="434.0" AnchorPane.topAnchor="57.0" />
+   <Label layoutX="282.0" layoutY="57.0" styleClass="label-label" text="Real name" AnchorPane.leftAnchor="282.0" AnchorPane.topAnchor="57.0" />
    <Label layoutX="35.0" layoutY="23.0" text="Staff List" />
 </AnchorPane>

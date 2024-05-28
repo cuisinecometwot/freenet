@@ -16,42 +16,28 @@
          <Label id="name-label" fx:id="lblName" layoutX="225.0" layoutY="170.0" prefHeight="17.0" prefWidth="160.0" text="Name" />
       </Pane>
       <Pane prefHeight="124.0" prefWidth="450.0">
-         <Button fx:id="btnComputers" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="74.0" prefWidth="450.0" styleClass="side-button" text="    Computers">
+         <Button fx:id="btnComputers" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="106.0" prefWidth="450.0" styleClass="side-button" text="    Computers">
             <graphic>
                <FontAwesomeIconView glyphName="DESKTOP" text="" />
             </graphic>
          </Button>
       </Pane>
       <Pane prefHeight="124.0" prefWidth="450.0">
-         <Button fx:id="btnUsers" alignment="BASELINE_LEFT" layoutY="1.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="450.0" styleClass="side-button" text="      User accounts">
+         <Button fx:id="btnUsers" alignment="BASELINE_LEFT" layoutY="-5.0" mnemonicParsing="false" prefHeight="106.0" prefWidth="450.0" styleClass="side-button" text="      User accounts">
             <graphic>
                <FontAwesomeIconView glyphName="USER" />
             </graphic>
          </Button>
       </Pane>
-      <Pane prefHeight="124.0" prefWidth="200.0">
-         <Button fx:id="btnStaff" alignment="BASELINE_LEFT" layoutY="1.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="450.0" styleClass="side-button" text="      Staffs">
-            <graphic>
-               <FontAwesomeIconView glyphName="USER" />
-            </graphic>
-         </Button>
-      </Pane>
-      <Pane prefHeight="124.0" prefWidth="200.0">
-         <Button fx:id="btnSchedule" alignment="BASELINE_LEFT" layoutY="1.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="450.0" styleClass="side-button" text="     Schedule">
-            <graphic>
-               <FontAwesomeIconView glyphName="CALENDAR" />
-            </graphic>
-         </Button>
-      </Pane>
-      <Pane id="last-layout" prefHeight="200.0" prefWidth="200.0">
-         <Button id="last-button" fx:id="btnRevenue" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="74.0" prefWidth="450.0" text="    Revenue">
-            <graphic>
-               <FontAwesomeIconView glyphName="MONEY" />
-            </graphic>
-         </Button>
+      <Pane id="last-layout" prefHeight="221.0" prefWidth="450.0">
          <Button id="logout-button" fx:id="btnLogout" layoutX="353.0" layoutY="78.0" mnemonicParsing="false">
             <graphic>
                <FontAwesomeIconView id="logout-button" glyphName="SIGN_OUT" size="50" text="" />
+            </graphic>
+         </Button>
+         <Button id="last-button" fx:id="btnStaff" alignment="BASELINE_LEFT" layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="450.0" text="      Staffs">
+            <graphic>
+               <FontAwesomeIconView glyphName="USER" />
             </graphic>
          </Button>
       </Pane>
