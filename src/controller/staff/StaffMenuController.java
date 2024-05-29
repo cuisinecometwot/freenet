@@ -16,6 +16,7 @@ public class StaffMenuController implements Initializable {
     public Button btnUsers;
     public Button btnStaff;
     public Button btnOrders;
+    public Button btnSchedules;
     public Button btnLogout;
 
     @Override
@@ -28,6 +29,7 @@ public class StaffMenuController implements Initializable {
         btnUsers.setOnAction(event -> onUsers());
         btnStaff.setOnAction(event -> onStaffs());
         btnOrders.setOnAction(event -> onOrders());
+        btnSchedules.setOnAction(event -> onSchedule());
         btnLogout.setOnAction(event -> onLogout());
     }
 

@@ -28,7 +28,7 @@ public class CustomerController {
 
     public static ObservableList<Customer> listCustomer () {
         ObservableList<Customer> customerList = FXCollections.observableArrayList();
-        String sql = "SELECT username, name, email, phone_number, password, balance FROM public.\"User\" WHERE role='customer'";
+        String sql = "SELECT username, name, email, phone_number, password, balance FROM public.\"User\" WHERE role='customer' ORDER BY username";
 
         try {
             Connection conn = DBConnection.getDBConnection().getConnection();
@@ -44,12 +44,17 @@ public class CustomerController {
         return customerList;
     }
 
-        //public static int deleteStaff(String username) throws ClassNotFoundException, SQLException{
-    //String sql = "DELETE FROM public.\"Customer\" WHERE username = "
-    //}
-
+    public static int updateBalance(Customer customer) throws ClassNotFoundException, SQLException{
+        String sql = "UPDATE public.\"User\" SET balance = ? WHERE username = ?" ;
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm  = conn.prepareStatement(sql);
+        stm.setObject(1, customer.getBalance());
+        stm.setObject(2, customer.getUsername());
+        return stm.executeUpdate();
+    }
+    
     public static int updateCustomer(Customer customer) throws ClassNotFoundException, SQLException{
-        String sql = "UPDATE public.\"User\" SET name = ?, email = ?, phone_number = ?, balance = ?, password = ? WHERE username =?" ;
+        String sql = "UPDATE public.\"User\" SET name = ?, email = ?, phone_number = ?, balance = ?, password = ? WHERE username = ?" ;
 
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm  = conn.prepareStatement(sql);
@@ -76,7 +81,13 @@ public class CustomerController {
         while (result.next()){
             res = result.getInt(1);
         }
-
         return res;
+    }
+    
+    public static void logout(int host_id) throws SQLException, ClassNotFoundException {
+        String sql = "UPDATE \"Computers\" SET username = null, status = 'offline' WHERE host_id = "+host_id;
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.executeUpdate();
     }
 }

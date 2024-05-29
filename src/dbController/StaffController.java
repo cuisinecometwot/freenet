@@ -13,7 +13,7 @@ import model.Staff;
 public class StaffController {
 
     public static ObservableList<Staff> getAllStaff() throws SQLException, ClassNotFoundException {
-        String sql = "SELECT * FROM \"User\" WHERE role='staff'";
+        String sql = "SELECT * FROM \"User\" WHERE role='staff' ORDER BY username";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         ResultSet rs = stm.executeQuery();

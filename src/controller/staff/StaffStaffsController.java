@@ -19,11 +19,6 @@ public class StaffStaffsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Create sample Staff objects
-        // TODO : query database
-        // Add staffs to the observable list
-
-        // Loop through staffList and create AnchorPanes dynamically
         try {
             for (Staff staff : Model.getInstance().getStaffList()) {
                 AnchorPane staffItem = createStaffItem(staff);

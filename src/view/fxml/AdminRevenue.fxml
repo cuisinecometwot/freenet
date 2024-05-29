@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="700.0" prefWidth="750.0" styleClass="container" stylesheets="@../styles/StaffListContent.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.admin.AdminRevenueController">
-   <Label layoutX="69.0" layoutY="57.0" styleClass="label-label" text="ID" AnchorPane.leftAnchor="69.0" AnchorPane.topAnchor="57.0" />
-   <Label layoutX="258.0" layoutY="57.0" styleClass="label-label" text="Status" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="57.0" />
-   <Label layoutX="434.0" layoutY="57.0" styleClass="label-label" text="Username" AnchorPane.leftAnchor="434.0" AnchorPane.topAnchor="57.0" />
-   <ListView layoutX="35.0" layoutY="123.0" prefHeight="536.0" prefWidth="650.0" styleClass="Vbox" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" />
-   <Label layoutX="35.0" layoutY="23.0" text="Revenue" />
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.XYChart?>
+<?import javafx.scene.chart.XYChart.Series?>
+
+<AnchorPane prefHeight="400.0" prefWidth="800.0" styleClass="menu-container" stylesheets="@../styles/CustomerMenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.admin.AdminRevenueController">
+  <children>
+  <LineChart fx:id="revenueChart">
+    <xAxis>
+      <CategoryAxis fx:id="xAxis" label="Date" />
+    </xAxis>
+    <yAxis>
+      <NumberAxis fx:id="yAxis" label="Income" />
+    </yAxis>
+    <chartData>
+      <XYChart.Series fx:id="revenueSeries" name="Revenue" />
+    </chartData>
+  </LineChart>
+  </children>
 </AnchorPane>

@@ -16,7 +16,7 @@ import model.Product;
 public class OrderController {
     public static ObservableList<Product> getProducts () throws SQLException, ClassNotFoundException {
         ObservableList<Product> list = FXCollections.observableArrayList();
-        String sql = "SELECT fdservice_id, name, cost FROM \"FDService\"";
+        String sql = "SELECT fdservice_id, name, cost FROM \"FDService\" ORDER BY fdservice_id";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         ResultSet rs = stm.executeQuery();
@@ -30,7 +30,18 @@ public class OrderController {
         return list;
     }
 
+    /*public static void useBalance(Order order) throws SQLException, ClassNotFoundException {
+    	String sql = "UPDATE \"User\" SET balance = balance - ? WHERE username = ?";
+    	Connection conn = DBConnection.getDBConnection().getConnection();
+    	PreparedStatement stm = conn.prepareStatement(sql);
+    	stm.setInt(1, order.getTotalCost());
+    	stm.setString(2, order.getUsername());
+    	stm.executeUpdate();
+    	
+    }*/
+    
     public static void addOrder(Order order) throws SQLException, ClassNotFoundException {
+    	//useBalance(order);
         String countSql = "SELECT COUNT(order_id) FROM public.\"Orders\"";
         String insertOrderSql = "INSERT INTO public.\"Orders\" (\"order_id\", \"username\", \"order_time\", \"status\", \"total_cost\") VALUES(?,?,?,?,?)";
 
@@ -76,7 +87,8 @@ public class OrderController {
             if (insertOrderStmt != null) {
                 insertOrderStmt.close();
             }
-        }}
+        }
+    }
     public static void addOrderItems (OrderItem orderItem, int order_id) throws SQLException, ClassNotFoundException {
         String insertOrderItemSql = "INSERT INTO public.\"OrderItems\" (\"order_id\", \"quantity\", \"sub_total\", \"fdservice_id\") VALUES(?,?,?,?)";
         PreparedStatement insertOrderItemStmt = null;
@@ -129,6 +141,13 @@ public class OrderController {
         stm.setString(1, status);
         stm.setInt(2,Integer.parseInt(order.getHostID()));
         stm.executeUpdate();
+        
+        if (status == "Canceled") { // refund
+        	sql = "UPDATE public.\"User\" SET balance = balance+? WHERE username = ? ";
+        	stm.setInt(1, 50000);//order.getTotalCost());
+        	stm.setString(2, order.getUsername());
+        	stm.executeUpdate();
+        }
     }
 }
 

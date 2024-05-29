@@ -82,7 +82,6 @@ public class StaffUserController implements Initializable {
                         customer.addBalance(amountToAdd);
                         customerBalanceLabel.setText("" + customer.getBalance());
                         amountTextField.setText("");
-                        // TODO: Update customer balance in database (assuming database connection exists)
                         try {
                             CustomerController.updateCustomer(customer);
                         } catch (ClassNotFoundException e) {

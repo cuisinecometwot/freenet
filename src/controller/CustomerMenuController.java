@@ -19,6 +19,9 @@ public class CustomerMenuController implements Initializable {
     public Label timerLabel;
     public Label usernameLabel;
     public Label balanceLabel;
+    public Label hostIdLabel;
+    public Label costLabel;
+    
     public Button btnOrder;
     public Button btnAccountInfo;
     public Button btnLogout;
@@ -33,6 +36,8 @@ public class CustomerMenuController implements Initializable {
         updateTimer();
         usernameLabel.setText(Model.getInstance().getCustomer().getUsername());
         balanceLabel.setText(String.valueOf(Model.getInstance().getCustomer().getBalance()));
+        hostIdLabel.setText(String.valueOf(Model.getInstance().getComputer().getHostID()));
+        costLabel.setText(String.valueOf(Model.getInstance().getComputer().getCostPerHour()));
         addListener();
     }
     public void updateTimer () {
@@ -53,7 +58,17 @@ public class CustomerMenuController implements Initializable {
                 }
                 ((Timeline)event.getSource()).stop();
             } else if (secondsRemaining % 30 == 0) {
-                Model.getInstance().getCustomer().setBalance(Model.getInstance().getCustomer().getBalance() - 30*cost/3600);
+                //Model.getInstance().getCustomer().setBalance(Model.getInstance().getCustomer().getBalance() - 30*cost/3600);
+            	Model.getInstance().getCustomer().setBalance(Model.getInstance().getCustomer().getBalance() - cost/120);
+            	
+            	try {
+					dbController.CustomerController.updateBalance(Model.getInstance().getCustomer());
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+            	
                 balanceLabel.setText(String.valueOf(Model.getInstance().getCustomer().getBalance()));
             }
         }));
@@ -95,7 +110,8 @@ public class CustomerMenuController implements Initializable {
     private void onLogout() throws SQLException, ClassNotFoundException {
         LocalDateTime logoutDate = LocalDateTime.now();
         CustomerController.updateCustomer(Model.getInstance().getCustomer());
-        System.out.println(logoutDate);
+        CustomerController.logout(Model.getInstance().getComputer().getHostID());
+        System.out.println("Log out:" + logoutDate);
         Stage stage =   (Stage) btnLogout.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
     }

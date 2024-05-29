@@ -100,13 +100,12 @@ public class CustomerOrderController implements Initializable {
         	lblError.setText("Done!");
             Model.getInstance().setCustomerOrder(new Order(Model.getInstance().orderItems));
             Model.getInstance().getCustomer().setBalance(Model.getInstance().getCustomer().getBalance() - Integer.parseInt(lblTotal.getText()) );
+            
+            dbController.CustomerController.updateBalance(Model.getInstance().getCustomer());
+            
             OrderController.addOrder(Model.getInstance().getCustomerOrder());
             Model.getInstance().orderItems.clear();
             Model.getInstance().setCustomerOrder(null);
-            /*for (OrderItem orderItem:model.getInstance().getCustomerOrder().getOrderItems()) {
-                System.out.println(orderItem.productObject().getName());
-            }*/
-
         }
     }
 }

@@ -124,3 +124,11 @@ INSERT INTO "User" ("username", "name", "email", "phone_number", "role", "passwo
 VALUES 
 ('kazuma', 'Duy Sato', 'kzumaa@gmail.com', '12345678920', 'admin', 'kazuma'),
 ('tabeos', 'Trung Anh', 'tabeos@example.com', '12345678921', 'admin', 'tabeos');
+
+-- Sample Revenue
+INSERT INTO "Revenue" ("day", "income") VALUES
+  ('2024-05-25', 55555),
+  ('2024-05-26', 75000),
+  ('2024-05-27', 123456),
+  ('2024-05-28', 255000),
+  ('2024-05-29', 200000);

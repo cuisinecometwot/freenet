@@ -232,6 +232,13 @@ public class ViewFactory {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("FreeNet");
+        
+        // Prevent closing from hitting "X" button
+        // Only Logout is accepted
+        //stage.setOnCloseRequest(event -> {
+          //  event.consume();
+        //});
+
         stage.show();
     }
     public void closeStage (Stage stage) {

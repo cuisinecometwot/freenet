@@ -23,18 +23,18 @@ public class ComputerController {
 //        return stm.executeUpdate();
 //    }
 
-    public static int changeStatus(Computer com) throws ClassNotFoundException, SQLException{
-        String sql = "UPDATE public.\"Computers\" SET username = ?, status = ? WHERE ";
+    public static void changeStatus(Computer com, int host_id, String username, String status) throws ClassNotFoundException, SQLException{
+        String sql = "UPDATE public.\"Computers\" SET username = ?, status = ? WHERE host_id = ?";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
-        stm.setObject(1, com.getUsername());
-        stm.setObject(2, com.getStatus());
-
-        return stm.executeUpdate();
+        stm.setObject(1, username);
+        stm.setObject(2, status);
+        stm.setObject(3,  host_id);
+        stm.executeUpdate();
     }
 
     public static ObservableList<Computer> getAllComputers() throws SQLException, ClassNotFoundException {
-        String sql = "SELECT * FROM \"Computers\"";
+        String sql = "SELECT * FROM \"Computers\" ORDER BY host_id";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         ResultSet rs = stm.executeQuery();
@@ -87,5 +87,18 @@ public class ComputerController {
         stm.setInt(4, computer.getCostPerHour());
         stm.setString(5, computer.getStatus());
         stm.executeUpdate();
+    }
+    
+    public static Computer random() throws SQLException, ClassNotFoundException {
+    	Computer rand = new Computer();
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        String sql = "SELECT * FROM \"Computers\" WHERE status = 'offline' ORDER BY RANDOM() LIMIT 1";
+        PreparedStatement stm = conn.prepareStatement(sql);
+        ResultSet host = stm.executeQuery();
+        while (host.next()) {
+        	rand = new Computer(host.getInt(1), host.getString(3), host.getString(4), host.getInt(5));
+        	Model.getInstance().setComputer(rand);
+        }
+        return rand;
     }
 }

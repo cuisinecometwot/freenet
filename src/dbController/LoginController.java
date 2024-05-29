@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import db.DBConnection;
+import db.*;
 import model.Admin;
 import model.Computer;
 import model.Customer;
@@ -31,19 +31,9 @@ public class LoginController {
                             Model.getInstance().setCustomer(new Customer(usernameResult, result.getString(2), result.getString(3),
                                     result.getString(4), result.getInt(8), result.getString(5)));
                             // new: assign a computer (randomly)
-                            sql = "SELECT * FROM \"Computers\" WHERE status = 'offline' ORDER BY RANDOM() LIMIT 1";
-                            PreparedStatement stm = conn.prepareStatement(sql);
-                            ResultSet host = stm.executeQuery();
-                            while (host.next()) {
-                            	/*int columnCount = host.getMetaData().getColumnCount();
-                                for (int i = 1; i <= columnCount; i++) {
-                                    String columnName = host.getMetaData().getColumnName(i);
-                                    Object columnValue = host.getObject(i);
-                                    System.out.println("Column Name: " + columnName + ", Value: " + columnValue);
-                                }*/
-                            	Computer rand = new Computer(host.getInt(1), host.getString(3), host.getString(4), host.getInt(5));
-                            	Model.getInstance().setComputer(rand);
-                            }
+                            Computer rand = dbController.ComputerController.random();
+                            dbController.ComputerController.changeStatus(rand, Model.getInstance().getComputer().getHostID(),
+                            		Model.getInstance().getCustomer().getUsername(),"online");
                             return "customer";
                         }
                         case "staff" -> {
@@ -56,7 +46,7 @@ public class LoginController {
                             return "admin";
                         }
                     }
-                } else return "Invalid"; // what is the diff between Invalid and null?
+                } else return "Invalid";
             }
             return null;
         } catch (ClassNotFoundException | SQLException e) {
