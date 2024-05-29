@@ -24,8 +24,10 @@ public class ViewFactory {
     private AnchorPane staffStaffsView;
     private AnchorPane staffOrdersView;
     private AnchorPane staffScheduleView;
+    
     private final StringProperty staffSelectedMenuItem;
     private final StringProperty adminSelectedMenuItem;
+    
     public ViewFactory() {
         this.staffSelectedMenuItem = new SimpleStringProperty("");
         this.adminSelectedMenuItem = new SimpleStringProperty("");
@@ -191,7 +193,7 @@ public class ViewFactory {
         Stage stage = new Stage();
 
         stage.setScene(scene);
-        stage.setTitle("Freenet");
+        stage.setTitle("FreeNet");
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX(screenBounds.getWidth() - 400);
         stage.setY(20);
@@ -229,7 +231,7 @@ public class ViewFactory {
         }
         Stage stage = new Stage();
         stage.setScene(scene);
-        stage.setTitle("Freenet");
+        stage.setTitle("FreeNet");
         stage.show();
     }
     public void closeStage (Stage stage) {

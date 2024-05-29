@@ -41,7 +41,7 @@ public class LoginController implements Initializable{
         String username = tfUsername.getText();
         String password = tfPassword.getText();
         if(username.isEmpty() || password.isEmpty()){
-            lbError.setText("Error: Missing field text(s).");
+            lbError.setText("Error: Missing text field(s).");
             lbError.setVisible(true);
         }else{
             String result = dbController.LoginController.login(username, password);

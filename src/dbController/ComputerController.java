@@ -9,6 +9,7 @@ import db.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Computer;
+import model.Model;
 
 public class ComputerController {
 //    public static int addComputer(Computer com) throws SQLException, ClassNotFoundException {

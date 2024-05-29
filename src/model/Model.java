@@ -12,6 +12,8 @@ import view.ViewFactory;
 
 public class Model {
 
+	
+	
     private ObservableList<Customer> customerList;
 
     public ObservableList<Customer> getCustomerList() {
@@ -25,7 +27,10 @@ public class Model {
         this.customerList = CustomerController.listCustomer();
     }
 
+    
+    
     private ObservableList<Computer> computerList;
+    
     public void setComputerList () throws SQLException, ClassNotFoundException {
         this.computerList = ComputerController.getAllComputers();
     }
@@ -36,6 +41,8 @@ public class Model {
         }
         return this.computerList;
     }
+    
+    
 
     private ObservableList<Staff> staffList;
     
@@ -53,9 +60,11 @@ public class Model {
     /   Admin
      */
     private Admin admin ;
+    
     public Admin getAdmin(){
         return admin;
     }
+    
     public void setAdmin(Admin admin) {
         this.admin = admin;
     }
@@ -64,6 +73,7 @@ public class Model {
             Staff
     /
      */
+    
     private Staff staff;
 
     public Staff getStaff(){
@@ -73,6 +83,8 @@ public class Model {
         this.staff = staff;
     }
 
+    
+    
     private ObservableList<Order> orderList;
 
     public void setOrderList() throws SQLException, ClassNotFoundException {
@@ -86,12 +98,12 @@ public class Model {
         return orderList;
     }
     /*
-
-    /               For Customer
+		For Customer
      */
 
 
     private Customer customer;
+    
     private Computer computer;
 
     private Order customerOrder;
@@ -113,8 +125,6 @@ public class Model {
     }
 
 
-
-
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
@@ -122,6 +132,7 @@ public class Model {
     public Customer getCustomer() {
         return customer;
     }
+    
     public ObservableList<OrderItem> orderItems =FXCollections.observableArrayList();
 
     private ObservableList<Product> products;

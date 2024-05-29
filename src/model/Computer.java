@@ -4,13 +4,15 @@ package model;
 
 public class Computer {
     private int hostID;
-    private String username;
-    private String status;
-    private Session session;
     private String ipAddress;
     private String config;
-
     private int costPerHour;
+    private String status;
+    
+    private String username;
+    private Session session;
+    
+    
     public Computer(int hostID, String status) {
         this.hostID = hostID;
         this.status = status;
@@ -22,6 +24,14 @@ public class Computer {
         this.status = status;
         this.username = username;
     }
+    
+    public Computer(int hostID, String ipAddress, String config, int costPerHour) {
+        this.hostID = hostID;
+        this.ipAddress = ipAddress;
+        this.config = config;
+        this.costPerHour = costPerHour;
+    }
+    
     public Computer(int hostID, String username, String ipAddress, String config,int costPerHour, String status) {
         this.hostID = hostID;
         this.username = username;

@@ -48,7 +48,7 @@ public class CustomerOrderController implements Initializable {
     }
 
     public void initProduct () throws SQLException, ClassNotFoundException {
-            Model.getInstance().setProducts();
+        Model.getInstance().setProducts();
     }
 
     public void updateOrder(Product product, int quantity) {
@@ -82,6 +82,8 @@ public class CustomerOrderController implements Initializable {
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
+            // new
+            lblTotal.setText("0");
         });
     }
 
@@ -94,6 +96,8 @@ public class CustomerOrderController implements Initializable {
             visiblePause.setOnFinished(event -> lblError.setText(""));
             visiblePause.play();
         } else {
+        	// new
+        	lblError.setText("Done!");
             Model.getInstance().setCustomerOrder(new Order(Model.getInstance().orderItems));
             Model.getInstance().getCustomer().setBalance(Model.getInstance().getCustomer().getBalance() - Integer.parseInt(lblTotal.getText()) );
             OrderController.addOrder(Model.getInstance().getCustomerOrder());

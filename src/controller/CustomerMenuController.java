@@ -24,7 +24,8 @@ public class CustomerMenuController implements Initializable {
     public Button btnLogout;
 
     private int secondsRemaining;
-
+    private int cost;
+    private int hostID;
 
 
     @Override
@@ -35,7 +36,10 @@ public class CustomerMenuController implements Initializable {
         addListener();
     }
     public void updateTimer () {
-        secondsRemaining = Model.getInstance().getCustomer().getBalance()* 3600 /5000;
+    	cost = Model.getInstance().getComputer().getCostPerHour();
+    	hostID = Model.getInstance().getComputer().getHostID();
+        System.out.println("HostID: "+hostID+'\n'+"Cost: "+cost);
+        secondsRemaining = Model.getInstance().getCustomer().getBalance()* 3600 / cost;
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             secondsRemaining--;
             updateTimerLabel();
@@ -49,7 +53,7 @@ public class CustomerMenuController implements Initializable {
                 }
                 ((Timeline)event.getSource()).stop();
             } else if (secondsRemaining % 30 == 0) {
-                Model.getInstance().getCustomer().setBalance(Model.getInstance().getCustomer().getBalance() - 30*5000/3600);
+                Model.getInstance().getCustomer().setBalance(Model.getInstance().getCustomer().getBalance() - 30*cost/3600);
                 balanceLabel.setText(String.valueOf(Model.getInstance().getCustomer().getBalance()));
             }
         }));
@@ -76,7 +80,7 @@ public class CustomerMenuController implements Initializable {
             }
         });
         balanceLabel.textProperty().addListener((observable, oldValue, newValue) -> {
-            secondsRemaining = Model.getInstance().getCustomer().getBalance()* 3600 /5000;
+            secondsRemaining = Model.getInstance().getCustomer().getBalance()* 3600 / cost;
             updateTimerLabel();
         });
     }

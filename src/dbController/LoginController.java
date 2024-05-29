@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import db.DBConnection;
 import model.Admin;
+import model.Computer;
 import model.Customer;
 import model.Model;
 import model.Staff;
@@ -29,6 +30,20 @@ public class LoginController {
                         case "customer" -> {
                             Model.getInstance().setCustomer(new Customer(usernameResult, result.getString(2), result.getString(3),
                                     result.getString(4), result.getInt(8), result.getString(5)));
+                            // new: assign a computer (randomly)
+                            sql = "SELECT * FROM \"Computers\" WHERE status = 'offline' ORDER BY RANDOM() LIMIT 1";
+                            PreparedStatement stm = conn.prepareStatement(sql);
+                            ResultSet host = stm.executeQuery();
+                            while (host.next()) {
+                            	/*int columnCount = host.getMetaData().getColumnCount();
+                                for (int i = 1; i <= columnCount; i++) {
+                                    String columnName = host.getMetaData().getColumnName(i);
+                                    Object columnValue = host.getObject(i);
+                                    System.out.println("Column Name: " + columnName + ", Value: " + columnValue);
+                                }*/
+                            	Computer rand = new Computer(host.getInt(1), host.getString(3), host.getString(4), host.getInt(5));
+                            	Model.getInstance().setComputer(rand);
+                            }
                             return "customer";
                         }
                         case "staff" -> {

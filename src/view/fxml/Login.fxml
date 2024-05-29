@@ -20,7 +20,7 @@
             <String fx:value="back-ground" />
          </styleClass>
          <children>
-            <Label layoutX="233.0" layoutY="55.0" prefHeight="18.0" prefWidth="207.0" styleClass="login-title" text="Freenet" />
+            <Label layoutX="233.0" layoutY="55.0" prefHeight="18.0" prefWidth="207.0" styleClass="login-title" text="FreeNet" />
             <Label alignment="CENTER_RIGHT" layoutX="368.0" layoutY="124.0" prefHeight="18.0" prefWidth="70.0" styleClass="computer-id" text="#001" />
          </children>
       </Pane>
