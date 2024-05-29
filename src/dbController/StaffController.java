@@ -1,14 +1,14 @@
 package dbController;
 
-import Model.Staff;
-import db.DBConnection;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import db.DBConnection;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import model.Staff;
 
 public class StaffController {
 

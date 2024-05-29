@@ -1,19 +1,17 @@
 package dbController;
 
-import Model.Model;
-import Model.Order;
-import Model.Product;
-import Model.OrderItem;
-import db.DBConnection;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
+
+import db.DBConnection;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import model.Model;
+import model.Order;
+import model.OrderItem;
+import model.Product;
 
 public class OrderController {
     public static ObservableList<Product> getProducts () throws SQLException, ClassNotFoundException {

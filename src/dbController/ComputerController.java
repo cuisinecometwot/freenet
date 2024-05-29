@@ -1,14 +1,14 @@
 package dbController;
 
-import Model.Computer;
-import db.DBConnection;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import db.DBConnection;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import model.Computer;
 
 public class ComputerController {
 //    public static int addComputer(Computer com) throws SQLException, ClassNotFoundException {

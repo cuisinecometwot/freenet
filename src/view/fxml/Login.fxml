@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="518.0" prefWidth="673.0" stylesheets="@../styles/LoginStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <Pane layoutX="105.0" layoutY="28.0" prefHeight="352.0" prefWidth="673.0" AnchorPane.bottomAnchor="160.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <styleClass>
+            <String fx:value="back-ground" />
+            <String fx:value="back-ground" />
+         </styleClass>
+         <children>
+            <Label layoutX="233.0" layoutY="55.0" prefHeight="18.0" prefWidth="207.0" styleClass="login-title" text="Freenet" />
+            <Label alignment="CENTER_RIGHT" layoutX="368.0" layoutY="124.0" prefHeight="18.0" prefWidth="70.0" styleClass="computer-id" text="#001" />
+         </children>
+      </Pane>
+      <Pane focusTraversable="true" layoutX="218.0" layoutY="144.8" prefHeight="286.0" prefWidth="223.0" styleClass="login-container" AnchorPane.bottomAnchor="87.0" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="145.0">
+         <children>
+            <TextField fx:id="tfUsername" layoutX="26.0" layoutY="92.0" prefHeight="20.0" prefWidth="171.0" />
+            <Label layoutX="26.0" layoutY="66.0" prefHeight="18.0" prefWidth="171.0" text="Username:" />
+            <Label layoutX="26.0" layoutY="127.0" prefHeight="18.0" prefWidth="171.0" text="Password:" />
+            <Button fx:id="btnLogin" layoutX="26.0" layoutY="211.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="171.0" text="Log in" />
+            <Label fx:id="lbError" layoutX="26.0" layoutY="32.0" prefHeight="17.0" prefWidth="171.0" styleClass="error-label" />
+            <PasswordField fx:id="tfPassword" layoutX="26.0" layoutY="152.0" prefHeight="20.0" prefWidth="171.0" styleClass="text-field" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

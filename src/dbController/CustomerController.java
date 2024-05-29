@@ -1,14 +1,14 @@
 package dbController;
 
-import Model.Customer;
-import db.DBConnection;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import db.DBConnection;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import model.Customer;
 
 public class CustomerController {
     public static boolean addCustomer(Customer customer) throws ClassNotFoundException, SQLException{

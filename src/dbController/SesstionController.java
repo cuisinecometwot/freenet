@@ -1,6 +1,6 @@
 package dbController;
 
-import Model.Session;
+import model.Session;
 
 public class SesstionController {
 

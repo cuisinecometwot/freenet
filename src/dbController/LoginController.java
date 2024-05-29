@@ -1,12 +1,15 @@
 package dbController;
 
-import Model.*;
-import db.DBConnection;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import db.DBConnection;
+import model.Admin;
+import model.Customer;
+import model.Model;
+import model.Staff;
 
 public class LoginController {
     public static String login(String username, String password) {
@@ -38,7 +41,7 @@ public class LoginController {
                             return "admin";
                         }
                     }
-                } else return "Invalid";
+                } else return "Invalid"; // what is the diff between Invalid and null?
             }
             return null;
         } catch (ClassNotFoundException | SQLException e) {
