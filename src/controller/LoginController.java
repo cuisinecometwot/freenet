@@ -17,7 +17,6 @@ import model.Model;
 
 public class LoginController implements Initializable{
 
-    //private AnchorPane login;
     @FXML
     private TextField tfUsername;
     @FXML
@@ -30,9 +29,20 @@ public class LoginController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnLogin.setOnAction(event -> onLogin());
+        // Handle focus movement with arrow keys
+        tfUsername.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.DOWN) {
+                tfPassword.requestFocus();
+            } else if (keyEvent.getCode() == KeyCode.ENTER) {
+                onLogin();
+            }
+        });
+
         tfPassword.setOnKeyPressed(keyEvent -> {
-        	if (keyEvent.getCode() == KeyCode.ENTER) {
-            	onLogin();
+            if (keyEvent.getCode() == KeyCode.UP) {
+                tfUsername.requestFocus();
+            } else if (keyEvent.getCode() == KeyCode.ENTER) {
+                onLogin();
             }
         });
     }
