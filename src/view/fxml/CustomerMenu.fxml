@@ -22,7 +22,12 @@
          
          <Label layoutX="240.0" layoutY="101.0" prefHeight="20.0" prefWidth="107.0" styleClass="label-balance" text="Cost/hour" />
          <Label fx:id="costLabel" layoutX="240.0" layoutY="121.0" prefHeight="20.0" prefWidth="107.0" styleClass="label-balance"/>
-         
+         <!-- ImageView fx:id="avatarImage" fitHeight="88.0" fitWidth="88.0" layoutX="32.0" layoutY="79.0" pickOnBounds="false" preserveRatio="true">
+  			 <clip>
+    			 <Circle fill="TRANSPARENT" layoutX="44.0" layoutY="44.0" radius="44.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+  			 </clip>
+		 </ImageView>
+		 <Circle fx:id="avatarCircle" layoutX="64.0" layoutY="111.0" radius="44.0" stroke="BLACK" strokeType="INSIDE" /-->
          <Circle fill="WHITE" layoutX="64.0" layoutY="111.0" radius="44.0" stroke="BLACK" strokeType="INSIDE" />
       </Pane>
       <Button fx:id="btnAccountInfo" mnemonicParsing="false" prefHeight="70.0" prefWidth="318.0" styleClass="first-button" text="Account Info" />
