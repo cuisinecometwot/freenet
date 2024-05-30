@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="testlinechart.Controller">
+    <children>
+        <AnchorPane prefHeight="435.0" prefWidth="508.0">
+            <children>
+                <LineChart fx:id="lineChart" prefHeight="339.0" prefWidth="456.0" title="lineChart">
+                    <xAxis>
+                        <CategoryAxis label="My X Label" side="BOTTOM"/>//the Value are String
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="My Y Label" side="LEFT"/>//the Value are Number
+                    </yAxis>
+                </LineChart>
+                <Button layoutX="366.0" layoutY="369.0" mnemonicParsing="false" onAction="#btn" text="Load Chart"/>
+                <Label fx:id="lbl" layoutX="51.0" layoutY="354.0" prefHeight="57.0" prefWidth="116.0"
+                       textAlignment="JUSTIFY">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
+    <columnConstraints>
+        <ColumnConstraints/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints/>
+    </rowConstraints>
+</GridPane>

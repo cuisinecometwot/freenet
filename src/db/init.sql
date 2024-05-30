@@ -126,7 +126,7 @@ VALUES
 ('tabeos', 'Trung Anh', 'tabeos@example.com', '12345678921', 'admin', 'tabeos');
 
 -- Sample Revenue
-INSERT INTO "Revenue" ("day", "income") VALUES
+INSERT INTO "Revenue" VALUES
   ('2024-05-25', 55555),
   ('2024-05-26', 75000),
   ('2024-05-27', 123456),

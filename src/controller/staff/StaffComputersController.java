@@ -18,10 +18,6 @@ public class StaffComputersController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Create sample Computer objects
-        // TODO : query database
-        // CHALLENGE: Show session time of each computer
-
         // Loop through computerList and create AnchorPanes dynamically
         try {
             for (Computer computer : Model.getInstance().getComputerList()) {
