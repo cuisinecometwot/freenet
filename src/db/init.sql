@@ -56,6 +56,13 @@ CREATE TABLE "FDService" (
   "cost" decimal NOT NULL
 );
 
+CREATE TABLE "Schedule" (
+  "day" date,
+  "shift" CHAR(9),
+  "username" VARCHAR(30),
+  PRIMARY KEY ("day", "shift")
+);
+
 CREATE TABLE "Revenue" (
   "day" date PRIMARY KEY,
   "income" decimal DEFAULT 0
@@ -73,6 +80,7 @@ ALTER TABLE "OrderItems" ADD FOREIGN KEY ("order_id") REFERENCES "Orders" ("orde
 
 ALTER TABLE "OrderItems" ADD FOREIGN KEY ("fdservice_id") REFERENCES "FDService" ("fdservice_id");
 
+ALTER TABLE "Schedule" ADD FOREIGN KEY ("username") REFERENCES "User" ("username");
 
 INSERT INTO "Computers" ("host_id", "ip_address", "configuration", "cost_perhour", "status")
 VALUES 
@@ -132,3 +140,10 @@ INSERT INTO "Revenue" VALUES
   ('2024-05-27', 123456),
   ('2024-05-28', 255000),
   ('2024-05-29', 200000);
+
+-- Sample Schedule for linhdv
+INSERT INTO "Schedule" VALUES
+  ('2024-05-31', '0800:1200', 'linhdv'),
+  ('2024-06-05', '1300:1700', 'linhdv'),
+  ('2024-06-06', '0900:1500', 'linhdv'),
+  ('2024-06-07', '0900:1500', 'linhdv');
