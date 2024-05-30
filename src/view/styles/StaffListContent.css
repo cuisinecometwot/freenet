@@ -1,0 +1,56 @@
+@font-face {
+    font-family: 'Itim';
+    src: url('../font/Itim-Regular.ttf');
+}
+
+.anchor-pane {
+    -fx-background-color: #E9BE9E ;
+    -fx-border-color: #DD590F;   /* Border color */
+    -fx-border-width: 0.5px 0.5px 0.5px 0.5px;     /* Border width */
+    -fx-border-style: solid;   /* Border style */
+    -fx-border-radius: 10px; /* Border radius */
+    -fx-background-radius: 10px; /* Background radius to match border radius */
+    -fx-pref-height: 50px;
+    -fx-text-fill: #000000;
+    -fx-font-family: Itim;
+    -fx-font-size: 18px;
+}
+
+
+
+
+.Vbox {
+    -fx-background-color: #ffffff;
+    -fx-spacing: 10px;
+}
+
+.container {
+    -fx-background-color: #ffffff;
+    -fx-border-color: E9BE9E;   /* Border color */
+    -fx-border-width: 7px 7px 7px 0;     /* Border width */
+    -fx-border-style: solid;   /* Border style */
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+
+
+
+.scroll-pane .viewport {
+    -fx-background-color: white;
+  }
+
+.label-label {
+    -fx-text-fill: #000000;
+    -fx-font-family: Itim;
+    -fx-font-size: 24px;
+}
+
+.computer-content {
+    -fx-text-fill: #000000;
+    -fx-font-family: Itim;
+    -fx-font-size: 18px;
+}

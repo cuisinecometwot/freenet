@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.XYChart?>
+<?import javafx.scene.chart.XYChart.Series?>
+
+<AnchorPane prefHeight="700.0" prefWidth="750.0" styleClass="container" stylesheets="@../styles/StaffListContent.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.admin.AdminRevenueController">
+   <children>
+        <LineChart fx:id="lineChart" prefHeight="660.0" prefWidth="700.0" title="Revenue Chart">
+                    <xAxis>
+                        <CategoryAxis label="Date" side="BOTTOM"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Income" side="LEFT"/>
+                    </yAxis>
+         </LineChart>
+         <Label fx:id="lbl" layoutX="51.0" layoutY="354.0" prefHeight="57.0" prefWidth="116.0" textAlignment="JUSTIFY">
+
+         </Label>
+    </children>
+</AnchorPane>
+
