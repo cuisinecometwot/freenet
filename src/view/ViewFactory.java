@@ -167,12 +167,12 @@ public class ViewFactory {
 
     public void showCustomerAccInfo () {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/CustomerAccInfo.fxml"));
-        createStage(loader);
+        createStageCanBeClosed(loader);
     }
 
     public void showCustomerOrderView () {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/CustomerOrder.fxml"));
-        createStage(loader);
+        createStageCanBeClosed(loader);
     }
 
 
@@ -197,7 +197,9 @@ public class ViewFactory {
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX(screenBounds.getWidth() - 400);
         stage.setY(20);
-        stage.show();
+        stage.setOnCloseRequest(event -> {
+            event.consume();
+        });
         stage.show();
     }
 
@@ -235,12 +237,27 @@ public class ViewFactory {
         
         // Prevent closing from hitting "X" button
         // Only Logout is accepted
-        //stage.setOnCloseRequest(event -> {
-          //  event.consume();
-        //});
-
+        stage.setOnCloseRequest(event -> {
+            event.consume();
+        });
         stage.show();
     }
+    
+    private void createStageCanBeClosed(FXMLLoader loader) {
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("FreeNet");
+        
+        stage.show();
+    }
+    
+    
     public void closeStage (Stage stage) {
         stage.close();
     }

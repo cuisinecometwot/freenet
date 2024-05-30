@@ -82,8 +82,6 @@ public class Model {
     public void setStaff(Staff staff) {
         this.staff = staff;
     }
-
-    
     
     private ObservableList<Order> orderList;
 
@@ -97,6 +95,21 @@ public class Model {
         }
         return orderList;
     }
+    
+    
+    public ObservableList<Schedule> schedule;
+    
+    public void setScheduleList(Staff staff) throws SQLException, ClassNotFoundException {
+    	schedule = dbController.StaffController.getSchedule(staff);
+    }
+    
+    public ObservableList<Schedule> getScheduleList() throws SQLException, ClassNotFoundException {
+    	if (schedule == null)
+    		setScheduleList(staff);
+    	return schedule;
+    }
+    
+    
     /*
 		For Customer
      */
@@ -133,7 +146,7 @@ public class Model {
         return customer;
     }
     
-    public ObservableList<OrderItem> orderItems =FXCollections.observableArrayList();
+    public ObservableList<OrderItem> orderItems = FXCollections.observableArrayList();
 
     private ObservableList<Product> products;
 
@@ -146,14 +159,13 @@ public class Model {
     public void setProducts () throws SQLException, ClassNotFoundException {
         products = OrderController.getProducts();
     }
+    
     private final ViewFactory viewFactory;
+    
     private static Model model;
     public Model() {
         this.viewFactory = new ViewFactory();
     }
-
-
-
 
 
     public static synchronized Model getInstance(){

@@ -4,11 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
 
 import db.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Staff;
+import model.Schedule;
 
 public class StaffController {
 
@@ -62,5 +64,25 @@ public class StaffController {
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setString(1, username);
         return stm.executeUpdate();
+    }
+    
+    public static ObservableList<Schedule> getSchedule(Staff staff) throws SQLException, ClassNotFoundException {
+    	ObservableList<Schedule> schedArrayList = FXCollections.observableArrayList();
+    	String sql = "SELECT * FROM \"Schedule\" WHERE username = ? ORDER BY day";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setString(1,staff.getUsername());
+        ResultSet rs = stm.executeQuery();
+        
+        while (rs.next()) {
+            String username = rs.getString("username");
+            Date day = rs.getDate("day");
+            String shift = rs.getString("shift");
+            
+            Schedule sched = new Schedule(day, shift, username);
+            schedArrayList.add(sched);
+        }
+    	
+    	return schedArrayList;
     }
 }
